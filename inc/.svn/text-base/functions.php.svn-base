@@ -1,0 +1,255 @@
+<?php
+/*
+ * 'The Count' XML Creator { includes/functions.php }
+ * Author: Jonathan Boho
+ * Created: Jan. 18, 2011
+ * Updated: July 11, 2011
+ * Description: Needed functions for the Count site.
+*/
+
+function date_convert($str) {
+	$months = array("", "Jan.", "Feb.", "March", "April", "May", "June", "July", "Aug.", "Sept.", "Oct.", "Nov.", "Dec.");
+	$date_array = explode('-', $str);
+	$pos = strpos($date_array[1], '0');
+	if ($pos !== 0) {
+		$index = $date_array[1];
+	} else {
+		$index = trim ($date_array[1], "0");
+	}	
+	$month = $months[$index];
+	$pos = strpos($date_array[2], '0');
+	if ($pos !== 0) {
+		$date = $date_array[2];
+	} else {
+		$date = trim($date_array[2], "0");
+	}
+	$formatted_date = $month . " " . $date . ", " . $date_array[0]; 
+	return $formatted_date;
+}
+
+function format_money($number, $fractional=false, $abbrev=false) {
+    if ($fractional) { 
+        $number = sprintf('%.2f', $number); 
+    }
+	if($abbrev) {
+		if($number >= 1000000) {
+			$suffix = ($number >= 1000000000) ? "B" : "M";
+			$number = ($number >= 1000000000) ? (string) number_format(($number/1000000000) , 2) : (string) number_format(($number/1000000), 2);
+			$number .= $suffix;
+		}
+	}
+    while (true) { 
+        $replaced = preg_replace('/(-?\d+)(\d\d\d)/', '$1,$2', $number); 
+        if ($replaced != $number) { 
+            $number = $replaced; 
+        } else { 
+            break; 
+        } 
+    }
+    return "$" . $number; 
+}
+
+// Redirects to the page given in the argument
+function redirect_to($str)
+{
+	header("Location:{$str}");
+	exit;
+}
+
+function the_title($page_name) {
+	if($page_name !== "home")
+	{
+		return(" :: " . trim(ucwords($page_name)));
+	}
+}
+
+function deepCopy($object)
+{ 
+	return unserialize(serialize($object)); 
+}
+
+
+function strip_zeros_from_date( $marked_string="" ) {
+  // first remove the marked zeros
+  $no_zeros = str_replace('*0', '', $marked_string);
+  // then remove any remaining marks
+  $cleaned_string = str_replace('*', '', $no_zeros);
+  return $cleaned_string;
+}
+
+function output_message($message="") {
+  if (!empty($message)) { 
+    return "<p class=\"message\">{$message}</p>";
+  } else {
+    return "";
+  }
+}
+
+function datetime_to_text($datetime="") {
+  $unixdatetime = strtotime($datetime);
+  return strftime("%B %d, %Y at %I:%M %p", $unixdatetime);
+}
+
+function check_for_login($redirect = false)
+{
+	//if the cart is empty, redirect to index.php
+	if (!isset($_SESSION['cart']) || count($_SESSION['cart']) == 0) { redirect_to("index.php"); }
+	 // if user is not logged in, they can't access the page and are directed to log in.
+	if (!isset($_SESSION['login']) || ($_SESSION['login'] == 0)) { redirect_to("login.php");}
+	// if user logouts out while on this page, the user is redirected to the login page.
+	if (isset($_GET['logout']) && ($_GET['logout'] == 0)) {
+		Session::logout();
+		$url = "index.php";
+		if ($redirect) { $url .= "?relog=" . $redirect; }
+		redirect_to($url);
+	}
+}
+
+function display_error_message($msg, $link) 
+{
+	log_item("error: {$msg} :: links back to {$link}."); // logs error to error file.
+	echo("<h2>Oops. We have a problem.</h2>");
+	echo("<p>{$msg} To leave this page, just <a href=\"{$link}\">click here</a>.</p>");
+}
+
+
+// Returns the current page url
+function current_url()
+{
+	$pageURL = $_SERVER['REQUEST_URI'];
+	return $pageURL;
+}
+
+// Strips search string of unneeded words
+function clean_keywords ($arr)
+{
+	$unwanted_words = array("the", "of", "to", "a", "in", "is", "it", "you", "that", "he", "she", " was", "for", "on", "are", "with", "as", "I ", "his", "they", "be", "at", "one", "have", "this", "but");
+	$new_array = array();
+	foreach ($arr as $word)
+	{
+		$match = false;
+		foreach ($unwanted_words as $unwanted)
+		{
+			if ($word == $unwanted) { $match = true; break; }	 
+		}
+		if (!$match) {array_push($new_array,$word);}
+	}
+	return $new_array;
+}
+
+// Prints messages to the log file
+function log_item($msg, $err=array())
+{
+	$date = strftime("%Y-%m-%d %T");
+	$log_item = $date . ": " . $msg . "\r\n";
+	$str = $_SERVER['REQUEST_URI'];
+	if(!empty($err))
+	{
+		//cycle through errors and stores them to file
+		foreach($err as $key=>$error)
+		{
+			$log_item .= "Error: " . $error . "\r\n";
+		}
+	}
+	if(!strpos($str, "admin"))
+	{
+		$file_contents = read_file("logs", "log.txt");
+	}
+	else
+	{
+		$file_contents = read_file("../logs", "log.txt");
+	}
+	
+	$write_to_file = $file_contents . $log_item;
+
+	if(!strpos($str, "admin"))
+	{
+		write_file("logs", "log.txt", $write_to_file);
+	}
+	else
+	{
+		write_file("../logs", "log.txt", $write_to_file);
+	}
+}
+
+// Writes data to a file. if the file does not yet exist, the file is created.
+function write_file($dir, $filename, $data) // arguments are the file directory, file name and data to be written
+{
+	$path = $dir . "/" . $filename; // path is the combination of the dir and filename.
+	if (!file_exists($path)) // if the file does not exist . . .
+	{
+		if(!$filehandle = fopen($path, 'w')) // if the file can't be created . . .
+		{
+			echo ("<p><strong>The file \"{$filename}\" cannot be created.</strong></p>");
+			return false; // . . . tell the user
+		}
+		else // if the file is created . . .
+		{
+			fwrite($filehandle, $data); // write the data to the file.
+			fclose($filehandle); // close the file.
+			return true;
+		}	
+	}
+	else // if the file already exists . . .
+	{
+		if(!$filehandle = fopen($path, 'w')) // . . . see if it can be written to. if not . . .
+		{
+			echo ("<p><strong>The file \"{$filename}\" can't be written to.</strong></p>"); // . . . tell the user.
+			return false;
+		}
+		else // if it can . . .
+		{
+			if(!fwrite($filehandle, $data)) // . . . attempt to write to the file. If writing fails . . . 
+			{
+				echo ("<p><strong>Writing to \"{$filename}\" failed.</strong></p>"); // . . . tell the user.
+				return false;
+			}
+			else // if writing succeeds . . .
+			{
+				fclose($filehandle); // close the file
+				return true;
+			}		
+		}
+	}
+}
+
+// This function reads a file and returns the data within the file.
+function read_file($dir, $filename) // arguments are the file directory and name.
+{
+	$path = $dir . "/" . $filename; // set path to file
+	if (file_exists($path)) // if the file exists . . .
+	{
+		if($filehandle = fopen($path, 'r')) // . . . and can be opened . . . 
+		{
+			$data = fread($filehandle, filesize($path)); // . . . store the file data in a variable.
+			fclose($filehandle); // close the file
+			return $data; // and return the data.
+		}
+		else 
+		{
+			echo ("<p><strong>The file \"{$filename}\" cannot be read.</strong></p>"); // tell the user the file cannot be read.
+		}
+	}
+	else
+	{
+		echo("<p><strong>The file \"{$filename}\" does not exist</strong></p>"); // the the user the file does not exist.
+	}	
+}
+
+// Sends an e-mail to a user -- prompted by user
+function send_mail_to_user($name, $email, $sub, $message) // arguments are user email, username and the generated password.
+{
+	$to = $email;
+	$from = "webmaster";
+	$subject = $sub;
+	$headers = "From: ". $from . "\n";
+	$headers .= "Reply-To: noreply\n";
+	$headers .= "X-Mailer: PHP/" . phpversion() . "\n";
+	$headers .= "MIME-Version: 1.0\n";
+	$headers .= "Content-Type: text/plain; charset=iso-8859-1";
+	$message =  strip_tags($message);
+	$result = mail($to, $subject, $message, $headers);
+	return $result;
+}
+
+?>

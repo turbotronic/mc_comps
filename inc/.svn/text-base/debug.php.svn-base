@@ -1,0 +1,37 @@
+<?php
+/*
+ * 'The Count' XML Creator { includes/debug.php }
+ * Author: Jonathan Boho
+ * Created: July 11, 2011
+ * Description: Added secrutity and debug functions.
+*/
+
+$DEBUG = 1; // debug variable to turn it ON
+
+/* tests to see if the debug unit can be set */
+function can_debug() {
+	global $DEBUG;
+	return ($_SERVER['REMOTE_ADDR'] === LOCAL_IP) ? $DEBUG : 0;
+}
+
+/* the debug function */
+function debug ($message) {
+	if (!can_debug()) { return; }
+	echo '<div style="background:yellow; color:black; border: 1px solid black;';
+	echo 'padding: 5px; margin: 5px; white-space: pre;">';
+	if (is_string ($message)) echo $message;
+	else var_dump ($message);
+	echo '</div>';
+}
+
+/* will display errors only when on a local server */
+if (can_debug()) {ini_set ('display_errors', 1); error_reporting (E_ALL);}
+else {ini_set ('display_errors', 0); error_reporting (E_ALL & ~E_NOTICE);}
+
+/* SET UP FIREPHP */
+require_once('FirePHPCore/FirePHP.class.php');
+require_once('FirePHPCore/fb.php');
+$firephp = FirePHP::getInstance(true);
+if (!can_debug()) { $firephp->setEnabled(false); } //turns off FirePHP if not on local server.
+
+?>

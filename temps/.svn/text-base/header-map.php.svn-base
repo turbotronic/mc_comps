@@ -1,0 +1,39 @@
+<?php if(!isset($this_file_name)) { header("Location: http://photos.denverpost.com/mediacenter/projects/911/money/index.php"); }?>
+<!DOCTYPE HTML> 
+<html lang="en" class="no-js"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <title>Colorado’s Homeland Security spending :: 9-11 Ten years later :: The Denver Post</title> 
+    <link rel="stylesheet" href="media/styles.css" media="screen"/>
+	<!--[if IE ]>
+	<style type="text/css">
+		.intro p { font-size:13px; }
+	</style>
+	<![endif]--> 
+</head> 
+<body>
+	<div id="header">
+		<div class="logo">
+			<p class="flag"><a href="http://www.denverpost.com">The Denver Post</a></p>
+		</div>
+		<p class="hidden"></p>
+	</div>
+    <div id="money-container"> 
+        <div id="money-wrapper">
+        <div id="topper">
+            <div class="intro">
+				<h1>9/11 <span class="lightest-gray">:</span> <span class="gray">10 years later</span> <span class="lightest-gray">:</span> Colorado’s Homeland Security spending</h1>
+				<p>The Denver Post made a first-ever attempt to account for the $354 million in U.S. Homeland Security Department grants Colorado governments have spent since Sept. 11, 2001. About half of the funds went toward equipment – from duct tape and booties to bomb robots and armored tanks. A state database containing those equipment purchases is incomplete because three different state agencies have been in charge of the grant program during the last decade. Many purchases from 2003 to 2006 are not included in the database. This map provides the most complete account of Colorado’s post-911 anti-terrorism equipment purchases available. You may also view this information as <a href="money-list.php">a searchable database</a>.</p>
+			</div> <!-- .intro -->
+			<div class="social-sharebar"> 
+            <h4>Share:</h4> 
+            <ul> 
+                <li><a class="share-fb" title="Share on Facebook" href="http://www.facebook.com/sharer.php?u=http://photos.denverpost.com/mediacenter/projects/911/money/">Facebook</a></li> 
+                <li><a class="share-twit" title="Share on Twitter" href="http://twitter.com/intent/tweet?source=webclient&text=Colorado Homeland Security spending http://photos.denverpost.com/mediacenter/projects/911/money/">Twitter</a></li> 
+                <li><a class="share-stumble" title="Share on StumbleUpon" href="http://www.stumbleupon.com/submit?url=http://photos.denverpost.com/mediacenter/projects/911/money/&amp;title=Colorado Homeland Security spending">StumbleUpon</a></li> 
+                <li><a class="share-reddit" title="Share on Reddit" href="http://reddit.com/submit?url=http://photos.denverpost.com/mediacenter/projects/911/money/&amp;title=Colorado Homeland Security spending">Reddit</a></li> 
+                <li><a class="share-delic" title="Share on Delicious" href="http://del.icio.us/post?url=http://photos.denverpost.com/mediacenter/projects/911/money/&amp;title=Colorado Homeland Security spending">Delicious</a></li> 
+                <li><a class="share-email" title="Email this to a friend" href="mailto:?subject=Colorado Homeland Security spending&amp;body=http://photos.denverpost.com/mediacenter/projects/911/money/">Email</a></li>               
+            </ul>
+            </div><!-- .social-sharebar -->
+		</div> <!-- #topper -->

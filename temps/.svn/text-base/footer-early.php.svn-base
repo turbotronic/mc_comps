@@ -1,0 +1,150 @@
+<?php if(!isset($this_file_name)) { header("Location: http://photos.denverpost.com/mediacenter/projects/911/money/index.php"); }?>
+	</div><!-- #money-wrapper -->
+</div><!-- #money-container -->
+	<div id="money-footer">
+		<div class="content-wide">
+			<p>All contents Copyright 2011 The Denver Post or other copyright holders. All rights reserved. <br>This material may not be published, broadcast, rewritten or redistributed for any commercial purpose.</p> 
+			<a href="http://www.medianewsgroup.com/"> 
+			<img src="http://extras.mnginteractive.com/live/media/mng_logos/mng_footergraphic.jpg" border="0" alt="Media News Group"/> 
+			</a> 
+			                                  <p><a href="http://www.denverpost.com/portlet/layout/html/privacypolicy/privacypolicy.jsp?siteId=36">About our Ads</a> | 
+			<a href="http://mediakit.denverpost.com/" title="Advertise">Advertise</a> | <a href="/archives" title="Archives">Archives</a> | <a href="http://tbe.taleo.net/NA11/ats/careers/searchResults.jsp?org=DENVERNEWSPAPER&cws=4" title="Careers at The Denver Post">Careers</a> | <a href="/contactus" title="Contact the Denver Post">Contact Us</a> |  <a href="https://www.denverpostcustomercare.com/nschoices.asp " title="Customer Care">Customer Care</a> |  <a href="/ethics" title="Ethics Policy">Ethics Policy</a>  |  <a href="https://secure.www.denverpost.com/registration/?rPage=login&url=http%3A%2F%2Fwww.denverpost.com%2F&eRightsSessionExpired=true" title="E-mail Newsletters &amp; Breaking News Alerts">E-mail Alerts</a> | <a href="https://www.denverpostcustomercare.com/electronicedition/main.asp?pub=DP" title="E Edition">E-Edition</a>  | <a href="http://m.denverpost.com" title="Mobile">Mobile</a> | <a href="/privacypolicy" title="Privacy Policy">Privacy Policy</a> | <a href="/webfeeds" title="Web Feeds">Feeds</a> | <a href="http://feeds.denverpost.com/dp-news-breaking-local">RSS</a> | <a class="myyahooButton" href="http://us.rd.yahoo.com/my/atm/DenverPost/News Breaking/*http://add.my.yahoo.com/rss?url=http://feeds.denverpost.com/dp-news-breaking-local">My Yahoo</a>   | <a href="/ci_16594528" title="Repurposing Denver Post content">Repurposing Denver Post content - Guidelines</a> | <a href="/photostore" title="Photo Store">Photo Reprints</a> | <a href="/sitemap" title="Site Map">Site Map</a> | <a href="https://www.denverpostcustomercare.com/nschoices.asp" title="Subscribe / Customer Care">Subscribe / Home Delivery</a>   | <a href="/termsofuse" title="Terms of Use">Terms of Use</a>  | <a href="http://www.denverpost.com/noads/ci_7352172" title="Browser Toolbar">Toolbar</a></p> 
+
+
+			<p id="other-sites">Our other sites:  <a href="http://www.vivacolorado.com">Viva Colorado</a> | <a href="http://www.dailycamera.com">Boulder Daily Camera</a> | <a href="http://www.coloradodaily.com">Boulder's Colorado Daily</a> | <a href="http://www.broomfieldenterprise.com">Broomfield Enterprise</a> | <a href="http://www.journal-advocate.com">Sterling Colorado Journal-Advocate</a><br><a href="http://www.eptrail.com">Estes Park Trail-Gazette</a> | <a href="http://www.lamarledger.com">The Lamar Ledger</a> | <a href="http://www.fortmorgantimes.com">The Fort Morgan Times</a> | <a href="http://www.brushnewstribune.com/">Brush (Colorado) News-Tribune</a></p> 
+		</div><!-- .content-wide -->
+		<iframe id="click_iframe" name="click_iframe" style="width: 1px; height: 1px; border: 0px solid #000000;"></iframe>
+	</div><!-- #money-footer -->
+
+	<!-- JAVASCRIPTS -->
+	<!--[if lt IE 7 ]>
+	<script src="http://extras.denverpost.com/sept11/media/js/dd_belatedpng.js"></script>
+	<script> DD_belatedPNG.fix('img, .png_bg');</script>
+	<![endif]-->
+
+	<!--[if IE 6]>
+	    <script type="text/javascript"> 
+	        /*Load jQuery if not already loaded*/ if(typeof jQuery == 'undefined'){ document.write("<script type=\"text/javascript\"   src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js\"></"+"script>"); var __noconflict = true; } 
+	            var IE6UPDATE_OPTIONS = {
+	                icons_path: "http://extras.denverpost.com/sept11/media/js/ie6update/images/"
+	            }
+	     </script>
+	     <script type="text/javascript" src="http://extras.denverpost.com/sept11/media/js/ie6update/ie6update.js"></script>
+	<![endif]-->			
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" type="text/javascript"></script> 
+    <script src="media/js/chosen.jquery.min.js"></script>
+	<script src="media/js/jquery.tinyscrollbar.min.js"></script>
+	<script src="media/js/jquery.tipsy.js"></script>
+	<script src="media/js/data.js"></script>
+    <script type="text/javascript">
+	function omniture_track(param){
+	    frames['click_iframe'].location.href = 'omniture.html?ne=' + param;
+	};
+
+	$(document).ready(function() {
+		var yearRequest,
+			index;
+		
+		$.ajaxSetup({ cache: false });	
+
+		$('.map-trigger').bind('click', function(e){
+			e.preventDefault();
+			var selectedRegion = $(this).attr('id');
+			showYears(selectedRegion);
+		});
+
+		$('#info-switcher li').bind('click', function(){
+			$('#info-switcher li').removeClass();
+			$('.money-info').empty();
+			if($(this).attr('id') === "aboutinfo") {
+				$(this).addClass("selected");
+				$('.money-info').html('<h2>About this region</h2><p style="font: 13px/24px Georgia, Times, serif;">' + regions.region[index].description + '</p>' );
+				omniture_track('about');
+			} else if ($(this).attr('id') == "totalsinfo") {
+				$.ajax({
+				  url: 'http://photos.denverpost.com/mediacenter/projects/911/money/output.php?year=' + yearRequest + "&region=" + index + '&typeold=catregion',
+				  success: function(data) {
+				    $('.money-info').html(data);
+				  }
+				});
+				$(this).addClass("selected");
+				omniture_track('totals');
+			} else {
+				$.ajax({
+				  url: 'http://photos.denverpost.com/mediacenter/projects/911/money/output.php?year=' + yearRequest + "&region=" + index + '&typeold=totalregion',
+				  success: function(data) {
+				    $('.money-info').html(data);
+				  }
+				});
+				$(this).addClass("selected");
+				omniture_track('compare');	
+			}
+		});
+
+
+		function showYears(r) {
+			index = parseInt(r.substring(2,4));
+			var data = availYears[r];
+			$('#info-switcher li').removeClass();
+			$('#aboutinfo').addClass("selected");
+			$('.money-info').html('<h2>About this region</h2><p style="font: 13px/24px Georgia, Times, serif;">' + regions.region[index].description + '</p>' ).css({"display" : "none"});
+			$('.money-headline').html('Data for ' + regions.region[index].name );
+			$('.year-container ul').fadeOut('fast', function(){
+				$(this).empty();
+				for(var i=0; i < data.length; i++) {
+					var $target = $('<li>' + data[i] + '</li>');
+					$target.bind('click', function() {
+						$('.year-container ul li').removeClass();
+						$(this).addClass("year-selected");
+						changeYear($(this).html(), index);
+					});
+					$(this).append($target);
+				}
+				if (data.length > 1) {
+					var $target = $('<li>All Years</li>');
+					$target.bind('click', function() {
+						$('.year-container ul li').removeClass();
+						$(this).addClass("year-selected");
+						changeYear($(this).html(), index);
+					});
+					$(this).append($target);
+				}
+				$(this).fadeIn('slow');	
+				$('.money-info').fadeIn('slow');
+			});
+		}
+
+		function changeYear(y, i) {
+			yearRequest = (y === "All Years") ? "all" : y;
+			$('.money-info').empty();
+			$('#info-switcher').fadeIn('fast');
+			if($('#compareinfo').attr('class') === 'selected') {
+				$.ajax({	
+				  url: 'http://photos.denverpost.com/mediacenter/projects/911/money/output.php?year=' + yearRequest + "&region=" + i + '&typeold=totalregion',
+				  success: function(data) {
+				    $('.money-info').html(data);
+				  }
+				});
+				omniture_track('totals');
+			} else {
+				$('#info-switcher li').removeClass();					
+				$('#totalsinfo').addClass("selected");					
+				$.ajax({	
+				  url: 'http://photos.denverpost.com/mediacenter/projects/911/money/output.php?year=' + yearRequest + "&region=" + i + '&typeold=catregion',
+				  success: function(data) {
+				    $('.money-info').html(data);
+				  }
+				});
+				omniture_track('compare');
+			}
+		}
+
+	});
+
+	function yearReveal(param) {
+		document.getElementById(param).click();
+		omniture_track('viewRegion');
+	};
+	</script>
+</body> 
+</html>

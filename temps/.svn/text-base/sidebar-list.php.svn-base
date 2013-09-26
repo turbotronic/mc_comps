@@ -1,0 +1,105 @@
+<?php if(!isset($this_file_name)) { header("Location: http://photos.denverpost.com/mediacenter/projects/911/money/money-list.php"); }?>
+	<div class="float-table">
+		<h3>Grand total of selection:</h3>
+		<p class="big-number" style="color:#666; font:bold 36px/36px Georgia, Times, serif;">
+			<?php echo format_money($total_cost, true, true); ?>
+		</p>
+	</div>
+	<?php
+		if(isset($region_selected)) { ?>
+			<?php
+			$sql = "SELECT purchases.category_id, region_id, category_name, description, SUM(total_cost) AS totals FROM purchases INNER JOIN categories ON categories.id = purchases.category_id WHERE";
+			if(isset($year_selected)) {
+				$sql .= " YEAR(date_purchased) = '" . $year_selected . "' AND";
+			}
+			$sql .= " purchases.region_id = '" .  $region_selected . "' GROUP BY purchases.category_id ORDER BY totals DESC;";
+			$cat_price_result = $db->execute($sql);
+			if(mysql_affected_rows() > 0) {
+		?>  
+		<h3>Totals by category for <?php echo $region; if(isset($year_selected)) { echo " in " . $year_selected; } ?></h3>
+			<div class="float-table">
+				<table>	
+					<tr class="top-row">
+						<td></td>
+						<td style="width: 130px">Category</td>
+						<td>Total</td>
+					</tr>
+					<?php 
+					$counter = 0; 
+					while ($row = $cat_price_result->fetch_array()) { ?>
+					<tr class="region-row">
+						<td><?php $counter = $counter + 1; echo $counter . ". "; ?></td>
+						<td style="width: 130px" class="cat-description" <?php if($row['description'] !== "") { echo 'title = "' . $row['description'] . '"'; } ?>><?php echo $row['category_name']; ?></td>
+						<td><?php echo format_money($row['totals'], true); ?></td>
+					</tr>
+					<?php } ?>
+				</table>
+	 		</div> 
+		<?php }
+		}
+	?>
+	<h3>Totals for <?php echo(!isset($year_selected)) ? "all years" : $year_selected; ?> by region</h3>
+	<div id="scrollpane"> 
+		<div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div> 
+		<div class="viewport"> 
+		    <div class="overview">
+				<table>	
+					<tr class="top-row">
+						<td></td>
+						<td>Region</td>
+						<td>Total</td>
+					</tr>
+					<?php 
+					$counter = 0;
+					while ($row = $region_result->fetch_array()) { ?>
+					<tr class="region-row">
+						<td><?php $counter = $counter + 1; echo $counter . ". "; ?></td>
+						<td class="cat-description" <?php if($row['description'] !== "") { echo 'title = "' . $row['description'] . '"'; } ?>><?php echo $row['region_name']; ?></td>
+						<td><?php echo format_money($row['totals'], true); ?></td>
+					</tr>
+					<?php } ?>
+				</table>
+	 		</div> 
+		</div>
+	</div>
+	<div class="float-table">
+	<h3>Totals for <?php echo(!isset($year_selected)) ? "all years" : $year_selected; ?> by category/subcategory</h3>
+	<table>
+		<tr class="top-row">
+			<td>Category</td>
+			<td>Total</td>
+		</tr>
+		<?php
+			$subcats = array();
+			while ($row = $subcat_result->fetch_array()) { 
+				array_push ($subcats, $row);
+			}
+		?>
+		<?php 
+			while ($row = $cat_result->fetch_array()) { ?>
+		<tr class="category-row">
+			<?php
+				$current_cat = $row['category_id'];
+			?>
+			<td class="cat-description" title="<?php echo $row['description']; ?>"><?php echo $row['category_name']; ?></td>
+			<td><?php echo format_money($row['totals'], true); ?></td>
+			<?php
+			foreach($subcats as $row => $value) {
+				if($value['category_id'] === $current_cat) {?>
+					</tr>
+					<tr class="subcategory-row">
+						<td class="indent"><?php echo $value['subcategory_name']; ?></td>
+						<td><?php echo format_money($value['totals'], true); ?></td>
+				<?php } 	
+			}
+			?>
+		</tr>
+		<?php } ?>
+	</table>
+	<p class="cat-hide">&raquo; Show subcategories</p>
+	</div>
+</div>
+
+
+
+	

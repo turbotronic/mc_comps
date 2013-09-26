@@ -1,0 +1,135 @@
+<?php if(!isset($this_file_name)) { header("Location: http://photos.denverpost.com/mediacenter/projects/911/money/money-list.php"); }?>
+<!DOCTYPE HTML> 
+<html lang="en" class="no-js"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <title>Colorado’s Homeland Security spending :: 9-11 Ten years later :: The Denver Post</title> 
+    <link rel="stylesheet" href="media/styles.css" media="screen"/>
+	<!--[if IE ]>
+	<style type="text/css">
+		.intro p { font-size:13px; }
+	</style>
+	<![endif]--> 
+</head> 
+<body>
+	<div id="header">
+		<div class="logo">
+			<p class="flag"><a href="http://www.denverpost.com">The Denver Post</a></p>
+		</div>
+		<p class="hidden"></p>
+	</div>
+    <div id="money-container"> 
+        <div id="money-wrapper">
+        <div id="topper">
+            <div class="intro">
+				<h1>9/11 <span class="lightest-gray">:</span> <span class="gray">10 years later</span> <span class="lightest-gray">:</span> Colorado’s Homeland Security spending</h1>
+				<p>The Denver Post made a first-ever attempt to account for the $354 million in U.S. Homeland Security Department grants Colorado governments have spent since Sept. 11, 2001. About half of the funds went toward equipment – from duct tape and booties to bomb robots and armored tanks. A state database containing those equipment purchases is incomplete because three different state agencies have been in charge of the grant program during the last decade. Many purchases from 2003 to 2006 are not included in the database. This database provides the most complete account of Colorado’s post-911 anti-terrorism equipment purchases available. You may also view this information in <a href="index.php">map form</a>.</p>
+				</div> <!-- .intro -->
+			<div class="social-sharebar"> 
+            <h4>Share:</h4> 
+            <ul> 
+                <li><a class="share-fb" title="Share on Facebook" href="http://www.facebook.com/sharer.php?u=http://photos.denverpost.com/mediacenter/projects/911/money/">Facebook</a></li> 
+                <li><a class="share-twit" title="Share on Twitter" href="http://twitter.com/intent/tweet?source=webclient&text=Colorado Homeland Security spending http://photos.denverpost.com/mediacenter/projects/911/money/">Twitter</a></li> 
+                <li><a class="share-stumble" title="Share on StumbleUpon" href="http://www.stumbleupon.com/submit?url=http://photos.denverpost.com/mediacenter/projects/911/money/&amp;title=Colorado Homeland Security spending">StumbleUpon</a></li> 
+                <li><a class="share-reddit" title="Share on Reddit" href="http://reddit.com/submit?url=http://photos.denverpost.com/mediacenter/projects/911/money/&amp;title=Colorado Homeland Security spending">Reddit</a></li> 
+                <li><a class="share-delic" title="Share on Delicious" href="http://del.icio.us/post?url=http://photos.denverpost.com/mediacenter/projects/911/money/&amp;title=Colorado Homeland Security spending">Delicious</a></li> 
+                <li><a class="share-email" title="Email this to a friend" href="mailto:?subject=Colorado Homeland Security spending&amp;body=http://photos.denverpost.com/mediacenter/projects/911/money/">Email</a></li>               
+            </ul>
+            </div><!-- .social-sharebar -->
+			<div class="sort-area">
+				<h4>Search by the fields below to explore the data</h4>
+				<form action="<?php echo $this_url?>" class="search" method="get">
+
+				<select title="Year list" class="chzn-select"  name="year" style="width:120px;" >
+					<option value="all">All Years</option>
+					<option value="2003" <?php if(isset($year_selected) && $year_selected === "2003") {echo "selected";}?>>2003</option>
+					<option value="2004" <?php if(isset($year_selected) && $year_selected === "2004") {echo "selected";}?>>2004</option>
+					<option value="2005" <?php if(isset($year_selected) && $year_selected === "2005") {echo "selected";}?>>2005</option>
+					<option value="2006" <?php if(isset($year_selected) && $year_selected === "2006") {echo "selected";}?>>2006</option>
+					<option value="2007" <?php if(isset($year_selected) && $year_selected === "2007") {echo "selected";}?>>2007</option>
+					<option value="2008" <?php if(isset($year_selected) && $year_selected === "2008") {echo "selected";}?>>2008</option>
+					<option value="2009" <?php if(isset($year_selected) && $year_selected === "2009") {echo "selected";}?>>2009</option>
+					<option value="2010" <?php if(isset($year_selected) && $year_selected === "2010") {echo "selected";}?>>2010</option>								
+					<option value="2011" <?php if(isset($year_selected) && $year_selected === "2011") {echo "selected";}?>>2011</option>
+					<option value="null" <?php if(isset($year_selected) && $year_selected === "null") {echo "selected";}?>>no year given</option>																
+				</select>
+				<select title="Region List" class="chzn-select"  name="region"  style="width:330px;"  >
+					<option value="all">All Regions</option>
+					<?php
+						$sql = "SELECT purchases.region_id, region_name FROM purchases INNER JOIN regions ON purchases.region_id = regions.id ";
+						if(isset($year_selected)) { 
+							$sql .= "WHERE YEAR(date_purchased) = '" . $year_selected . "' ";
+						}
+						if(isset($category_selected)) {
+							$sql .= (!isset($year_selected)) ? " WHERE category_id = '" . $category_selected ."'" : " AND category_id = '" . $category_selected . "'";	
+						}
+						if(isset($subcategory_selected)) {
+							$sql .= (!isset($year_selected) && !isset($category_selected)) ? " WHERE subcategory_id = '" . $subcategory_selected ."'" : " AND subcategory_id = '" . $subcategory_selected . "'";
+						}
+						$sql .= "GROUP BY region_id ORDER BY region_name ASC;";
+						$regions = $db->execute($sql);
+						while($row = $regions->fetch_array()) {
+							$r = new Region($row['region_id']);
+							echo '<option value="' . $r->id . '" ';
+							if(isset($region_selected) && $region_selected == $r->id) {echo "selected";}
+							echo '>' . $r->region_name . '</option>';
+						}
+					?>
+				</select>
+				<select title="Category List" class="chzn-select"  name="category" style="width:180px;" >
+					<option value="all">All Categories</option>
+					<?php
+						$sql = "SELECT purchases.category_id, category_name FROM purchases INNER JOIN categories ON purchases.category_id = categories.id ";
+						if(isset($year_selected)) { 
+							$sql .= "WHERE YEAR(date_purchased) = '" . $year_selected . "' ";
+						}
+						if(isset($region_selected)) {
+							$sql .= (!isset($year_selected)) ? " WHERE region_id = '" . $region_selected ."'" : " AND region_id = '" . $region_selected . "'";
+						}
+						if(isset($subcategory_selected)) {
+							$sql .= (!isset($year_selected) && !isset($category_selected)) ? " WHERE subcategory_id = '" . $subcategory_selected ."'" : " AND subcategory_id = '" . $subcategory_selected . "'";
+						}
+						$sql .= "GROUP BY category_id ORDER BY category_name ASC;";
+						$categories = $db->execute($sql);
+						while($row = $categories->fetch_array()) {
+							$c = new Category($row['category_id']);
+							echo '<option value="' . $c->id . '" ';
+							if(isset($category_selected) && $category_selected == $c->id) {echo "selected";}
+							echo '>' . $c->category_name . '</option>';
+						}
+					?>
+				</select>
+				<select title="Subcategory List" class="chzn-select"  name="subcategory" style="width:180px;"  >
+					<option value="all">All Subcategories</option>
+					<?php
+						$sql = "SELECT purchases.subcategory_id, subcategory_name FROM purchases INNER JOIN subcategories ON purchases.subcategory_id = subcategories.id ";
+						if(isset($year_selected)) { 
+							$sql .= "WHERE YEAR(date_purchased) = '" . $year_selected . "' ";
+						}
+						if(isset($region_selected)) {
+							$sql .= (!isset($year_selected)) ? " WHERE region_id = '" . $region_selected ."'" : " AND region_id = '" . $region_selected . "'";
+						}
+						if(isset($category_selected)) {
+							$sql .= (!isset($year_selected) && !isset($region_selected)) ? " WHERE subcategories.category_id = '" . $category_selected ."'" : " AND subcategories.category_id = '" . $category_selected . "'";	
+						}
+						$sql .= " GROUP BY subcategory_id ORDER BY subcategory_name ASC;";
+						echo $sql;
+						$subcategories = $db->execute($sql);
+						while($row = $subcategories->fetch_array()) {
+							$sub = new Subcategory($row['subcategory_id']);
+							echo "NAME: " . $sub->subcategory_name . "<br/>";
+							echo '<option value="' . $sub->id . '" ';
+							if(isset($subcategory_selected) && $subcategory_selected == $sub->id) {echo "selected";}
+							echo '>' . $sub->subcategory_name . '</option>';
+						}
+					?>
+				</select>
+				<?php require_once('options.php'); ?>
+				<div class="button-field">
+					<input type="submit" value="Sort Data" onclick="javascript: submitFilter();" />
+					<input type="submit" name="reset" value="Reset" />
+				</div>
+									
+				</form>
+			</div> <!-- .sort-area -->		
+		</div> <!-- #topper -->

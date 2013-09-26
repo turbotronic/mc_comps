@@ -1,0 +1,50 @@
+<?php
+/*
+ * includes/purchase.php
+ * Author: Jonathan Boho
+ * Created: August 15, 2011
+ * Description: Purchase object contains all purchase info and functions.
+*/
+
+class Purchase extends BaseObject
+{
+	// set vars
+ 	public $id;
+ 	public $region_id;
+ 	public $date_purchased;
+ 	public $product;
+	public $quantity;
+	public $cost;
+	public $total_cost;
+	public $category_id; 
+	public $subcategory_id;
+	public $region;
+	public $category;
+	public $cat_description;	
+	public $subcategory;
+	
+	function __construct($args = null)
+	{
+		parent::$table_name = "purchases";
+		parent::$db_fields = array('id', 'region_id', 'date_purchased', 'product', 'quantity', 'cost', 'total_cost', 'category_id', 'subcategory_id');
+		if($args !== null) {
+			if(is_array($args)) {
+				$this->instantiate($args);
+				$this->populate_all($this->id);		
+			} else {
+				$this->create_by_id($args);
+				$this->populate_all($args);
+			} 
+		} else {
+			throw new MySQLException("Failure.");
+		}	
+	}
+	
+	private function populate_all($id) {
+		$this->region = Region::get_region($this->region_id);
+		$this->category = Category::get_category($this->category_id);
+		$this->cat_description = Category::get_description($this->category_id);	
+		$this->subcategory = Subcategory::get_subcategory($this->subcategory_id);
+	}
+}
+?>

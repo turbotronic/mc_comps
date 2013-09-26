@@ -1,0 +1,45 @@
+<?php
+/*
+ * includes/subcategory.php
+ * Author: Jonathan Boho
+ * Created: August 15, 2011
+ * Description: Subcategory object contains all subcategory info and functions.
+*/
+
+class Subcategory extends BaseObject
+{
+	// set vars
+ 	public $id;
+	public $category_id;
+ 	public $subcategory_name;
+	
+	function __construct($args = null)
+	{
+		parent::$table_name = "subcategories";
+		parent::$db_fields = array('id', 'category_id', 'subcategory_name');
+		if($args !== null) {
+			if(is_array($args)) {
+				$this->instantiate($args);		
+			} else {
+				$this->create_by_id($args);
+			} 
+		} else {
+			throw new MySQLException("Failure");
+		}	
+	}
+	
+	public static function get_subcategory($id) {
+		$sql = "SELECT subcategory_name FROM subcategories";
+		$sql .= " WHERE id=". $id;
+		$sql .= " LIMIT 1;";
+		$query = mysql_query($sql);
+		if(mysql_affected_rows() > 0) {
+			while($row = mysql_fetch_assoc($query)) {
+				return $row['subcategory_name'];
+			}
+		} else {
+			return null;
+		}
+	}
+}
+?>

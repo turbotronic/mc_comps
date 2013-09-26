@@ -1,0 +1,59 @@
+<?php
+/*
+ * includes/category.php
+ * Author: Jonathan Boho
+ * Created: August 15, 2011
+ * Description: Category object contains all category info and functions.
+*/
+
+class Category extends BaseObject
+{
+	// set vars
+ 	public $id;
+ 	public $category_name;
+	public $description;
+	
+	function __construct($args = null)
+	{
+		parent::$table_name = "categories";
+		parent::$db_fields = array('id', 'category_name', 'description');
+		if($args !== null) {
+			if(is_array($args)) {
+				$this->instantiate($args);			
+			} else {
+				$this->create_by_id($args);
+			} 
+		} else {
+			throw new MySQLException("Failure.");
+		}	
+	}
+	
+	public static function get_category($id) {
+		$sql = "SELECT category_name FROM categories";
+		$sql .= " WHERE id=". $id;
+		$sql .= " LIMIT 1;";
+		$query = mysql_query($sql);
+		if(mysql_affected_rows() > 0) {
+			while($row = mysql_fetch_assoc($query)) {
+				return $row['category_name'];
+			}
+		} else {
+			return null;
+		}
+	}
+	
+	public static function get_description($id) {
+		$sql = "SELECT description FROM categories";
+		$sql .= " WHERE id=". $id;
+		$sql .= " LIMIT 1;";
+		$query = mysql_query($sql);
+		if(mysql_affected_rows() > 0) {
+			while($row = mysql_fetch_assoc($query)) {
+				return $row['description'];
+			}
+		} else {
+			return null;
+		}
+	}	
+}
+?>

@@ -1,0 +1,45 @@
+<?php
+/*
+ * includes/region.php
+ * Author: Jonathan Boho
+ * Created: August 15, 2011
+ * Description: Region object contains all region info and functions.
+*/
+
+class Region extends BaseObject
+{
+	// set vars
+ 	public $id;
+ 	public $region_name;
+	public $description;
+	
+	function __construct($args = null)
+	{
+		parent::$table_name = "regions";
+		parent::$db_fields = array('id', 'region_name', 'description');
+		if($args !== null) {
+			if(is_array($args)) {
+				$this->instantiate($args);			
+			} else {
+				$this->create_by_id($args);
+			} 
+		} else {
+			throw new MySQLException("Failure.");
+		}	
+	}
+	
+	public static function get_region($id) {
+		$sql = "SELECT region_name FROM regions";
+		$sql .= " WHERE id=". $id;
+		$sql .= " LIMIT 1;";
+		$query = mysql_query($sql);
+		if(mysql_affected_rows() > 0) {
+			while($row = mysql_fetch_assoc($query)) {
+				return $row['region_name'];
+			}
+		} else {
+			return null;
+		}
+	}		
+}
+?>

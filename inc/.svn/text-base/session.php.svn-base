@@ -1,0 +1,107 @@
+<?php
+/*
+ * 'The Count' XML Creator { includes/session.php }
+ * Author: Jonathan Boho
+ * Created: March 29, 2011
+ * Updated: June 27, 2011
+ * Description: Session class manages session information.
+*/
+require_once ('io.php');
+
+class Session
+{
+	function __construct()
+	{
+		// not instantiated
+	}
+	
+	public static function login($user = null) {
+		if ($user === null) {
+			throw new Exeception;
+		}
+		$date = date("Y-m-d G:i:s");
+		$user->last_login = $date;
+		try
+		{
+			$user->update(); // update db to reflect login time
+			// if update succeeds, create the session			
+			$_SESSION['login'] = 1; // indicate to session that user has logged in
+			// set user session vars
+			$_SESSION['userID'] = $user->id;
+			$_SESSION['username'] = $user->get_username($user->username);
+			$_SESSION['time'] = time();
+			// log successful attempt
+			IO::log_item("User {$_SESSION['username']} logged in. UserID: {$user->id}.");
+		}
+		catch(Exception $e)
+		{
+			// error message
+		}		
+	}
+	
+	public static function logout() {
+		// if count is currently open
+		if(isset($_SESSION['countID'])) {
+			// unlock count
+			if($_SESSION['countID'] > 0) {
+				try
+				{
+					mysql_query("UPDATE counts SET locked = 0 , current_editor = 0 WHERE id = " . $_SESSION['countID'] . ";");
+				}
+				catch(Exception $e)
+				{
+					// error message
+				}	
+			}
+			// kill vars
+			$_SESSION['countID'] = ""; unset($_SESSION['countID']);
+		}
+		$_SESSION['login'] = 0;
+		$session_time = self::calculate_login_time($_SESSION['time']);
+		IO::log_item("User {$_SESSION['username']} logged out. User ID: {$_SESSION['userID']}. Session time: {$session_time}");					
+		$_SESSION['userID'] = "";
+		$_SESSION['username'] = "";		
+		$_SESSION['time'] = "";		
+		unset($_SESSION['userID']);
+		unset($_SESSION['username']);		
+		unset($_SESSION['time']);		
+			
+	}
+	
+	public static function check_login($login) {
+		if (!$login) {
+			return false;
+		} else {
+			return ($login === 1) ? true : false;
+		}	
+	}
+	
+	public static function check_session_vars() {
+		// check for existence of login var
+		if (!isset($_SESSION['login'])) { redirect_to("login.php"); }
+		// check for correct login var
+		if (isset($_SESSION['login']) && $_SESSION['login'] === 0) { redirect_to("login.php"); }
+		// if logout occurs while in page
+		if (isset($_GET['logout']) && ($_GET['logout'] === '0')) {
+			if(isset($_SESSION['userID'])) {
+				Session::logout();
+				redirect_to('login.php');
+			}
+		}
+	}	
+	
+	private function calculate_login_time($time_of_login) {
+		$current_time = time();
+		$elapsed_time = $current_time - $time_of_login;
+		$time_string = "";
+		$hours = intval(intval($elapsed_time) / 3600);
+		$minutes = intval((intval($elapsed_time) / 60),60);
+		$seconds = intval(intval($elapsed_time), 60);		
+		if($hours > 0) { $time_string .= "$hours:"; } else { $time_string .= "00:"; }
+		if ($hours > 0 || $minutes > 0) { $time_string .=  "$minutes"; } else { $time_string .= "00"; }
+		$time_string .= ($seconds < 10) ? ":0$seconds" : ":$seconds";
+		return $time_string;
+	}
+}	
+session_start();
+?>

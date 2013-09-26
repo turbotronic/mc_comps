@@ -1,0 +1,43 @@
+<?php if(!isset($this_file_name)) { header("Location: http://photos.denverpost.com/mediacenter/projects/911/money/money-list.php"); }?>
+	<div class="pagination-nav">
+		<?php if($pagination->total_pages() > 1) { echo "<h4>More Results</h4>"; }?>
+	<ul>
+	<?php
+		if($pagination->total_pages() > 1) {
+			if (strrpos($this_url, "?")) {
+				if(!strrpos($this_url, "?page")) {
+					if(!strrpos($this_url, "&page")) {
+						$dest_url = $this_url . "&page=";
+					} else {
+						$pos = strrpos($this_url, "&page");
+						$dest_url = substr($this_url, 0, $pos) . "&page=";
+					}
+				}
+				else {
+					$pos = strrpos($this_url, "?page");
+					$dest_url = substr($this_url, 0, $pos) . "?page=";
+				}
+			} else {
+				$dest_url = $this_url . "?page=";
+			}
+			
+			if($pagination->has_previous_page()) {
+				echo '<li><a href="' . $dest_url . $pagination->previous_page() . '">&laquo; Previous </a></li>';
+			}
+			
+			for($i=1; $i<= $pagination->total_pages(); $i++) {
+				if($i == $current_page) {
+					echo ' <span class="selected">' . $i . '</span> ';
+				} else {
+					echo '<li> <a href="' . $dest_url . $i . '">' . $i . '</a> </li>';
+				}	
+			}
+			
+			if($pagination->has_next_page()) {
+				echo '<li><a href="' . $dest_url . $pagination->next_page() . '">Next &raquo;</a></li>';
+			}
+			
+		}
+	?>
+	</ul>
+	</div>

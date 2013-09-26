@@ -1,0 +1,487 @@
+//
+// Responsive: Utility classes -- mashup of Foundation & Bootstrap
+// ---------------------------------------------------------------
+
+// IE10 in Windows (Phone) 8
+//
+// Support for responsive views via media queries is kind of borked in IE10, for
+// Surface/desktop in split view and for Windows Phone 8. This particular fix
+// must be accompanied by a snippet of JavaScript to sniff the user agent and
+// apply some conditional CSS to *only* the Surface/desktop Windows 8. Look at
+// our Getting Started page for more information on this bug.
+//
+// For more information, see the following:
+//
+// Issue: https://github.com/twbs/bootstrap/issues/10497
+// Docs: http://getbootstrap.com/getting-started/#browsers
+// Source: http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/
+
+@-ms-viewport {
+  width: device-width;
+}
+
+
+// Hide from screenreaders and browsers
+//
+// Credit: HTML5 Boilerplate
+
+.hidden {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+
+// Visibility utilities
+
+.visible-xs {
+  .responsive-invisibility();
+  @media (max-width: @breakpoint-xs-max) {
+    .responsive-visibility();
+  }
+  &.visible-sm {
+    @media (min-width: @breakpoint-sm) and (max-width: @breakpoint-sm-max) {
+      .responsive-visibility();
+    }
+  }
+  &.visible-md {
+    @media (min-width: @breakpoint-md) and (max-width: @breakpoint-md-max) {
+      .responsive-visibility();
+    }
+  }
+  &.visible-lg {
+    @media (min-width: @breakpoint-lg) and (max-width: @breakpoint-lg-max) {
+      .responsive-visibility();
+    }
+  }
+  &.visible-xl {
+    @media (min-width: @breakpoint-xl) {
+      .responsive-visibility();
+    }
+  }
+}
+.visible-sm {
+  .responsive-invisibility();
+  &.visible-xs {
+    @media (max-width: @breakpoint-xs-max) {
+      .responsive-visibility();
+    }
+  }
+  @media (min-width: @breakpoint-sm) and (max-width: @breakpoint-sm-max) {
+    .responsive-visibility();
+  }
+  &.visible-md {
+    @media (min-width: @breakpoint-md) and (max-width: @breakpoint-md-max) {
+      .responsive-visibility();
+    }
+  }
+  &.visible-lg {
+    @media (min-width: @breakpoint-lg) and (max-width: @breakpoint-lg-max) {
+      .responsive-visibility();
+    }
+  }
+  &.visible-xl {
+    @media (min-width: @breakpoint-xl) {
+      .responsive-visibility();
+    }
+  }
+}
+.visible-md {
+  .responsive-invisibility();
+  &.visible-xs {
+    @media (max-width: @breakpoint-xs-max) {
+      .responsive-visibility();
+    }
+  }
+  &.visible-sm {
+    @media (min-width: @breakpoint-sm) and (max-width: @breakpoint-sm-max) {
+      .responsive-visibility();
+    }
+  }
+  @media (min-width: @breakpoint-md) and (max-width: @breakpoint-md-max) {
+    .responsive-visibility();
+  }
+  &.visible-lg {
+    @media (min-width: @breakpoint-lg) and (max-width: @breakpoint-lg-max) {
+      .responsive-visibility();
+    }
+  }
+  &.visible-xl {
+    @media (min-width: @breakpoint-xl) {
+      .responsive-visibility();
+    }
+  }
+}
+.visible-lg {
+  .responsive-invisibility();
+  &.visible-xs {
+    @media (max-width: @breakpoint-xs-max) {
+      .responsive-visibility();
+    }
+  }
+  &.visible-sm {
+    @media (min-width: @breakpoint-sm) and (max-width: @breakpoint-sm-max) {
+      .responsive-visibility();
+    }
+  }
+  &.visible-md {
+    @media (min-width: @breakpoint-md) and (max-width: @breakpoint-md-max) {
+      .responsive-visibility();
+    }
+  }
+  @media (min-width: @breakpoint-lg) and (max-width: @breakpoint-lg-max) {
+    .responsive-visibility();
+  }
+  &.visible-xl {
+    @media (min-width: @breakpoint-xl) {
+      .responsive-visibility();
+    }
+  }
+}
+.visible-xl {
+  .responsive-invisibility();
+  &.visible-xs {
+    @media (max-width: @breakpoint-xs-max) {
+      .responsive-visibility();
+    }
+  }
+  &.visible-sm {
+    @media (min-width: @breakpoint-sm) and (max-width: @breakpoint-sm-max) {
+      .responsive-visibility();
+    }
+  }
+  &.visible-md {
+    @media (min-width: @breakpoint-md) and (max-width: @breakpoint-md-max) {
+      .responsive-visibility();
+    }
+  }
+  &.visible-lg {
+    @media (min-width: @breakpoint-lg) and (max-width: @breakpoint-lg-max) {
+      .responsive-visibility();
+    }
+  }
+  @media (min-width: @breakpoint-xl) {
+    .responsive-visibility();
+  }
+}
+
+.hidden-xs {
+  .responsive-visibility();
+  @media (max-width: @breakpoint-xs-max) {
+    .responsive-invisibility();
+  }
+  &.hidden-sm {
+    @media (min-width: @breakpoint-sm) and (max-width: @breakpoint-sm-max) {
+      .responsive-invisibility();
+    }
+  }
+  &.hidden-md {
+    @media (min-width: @breakpoint-md) and (max-width: @breakpoint-md-max) {
+      .responsive-invisibility();
+    }
+  }
+  &.hidden-lg {
+    @media (min-width: @breakpoint-lg) and (max-width: @breakpoint-lg-max) {
+      .responsive-invisibility();
+    }
+  }
+  &.hidden-xl {
+    @media (min-width: @breakpoint-xl) {
+      .responsive-invisibility();
+    }
+  }
+}
+.hidden-sm {
+  .responsive-visibility();
+  &.hidden-xs {
+    @media (max-width: @breakpoint-xs-max) {
+      .responsive-invisibility();
+    }
+  }
+  @media (min-width: @breakpoint-sm) and (max-width: @breakpoint-sm-max) {
+    .responsive-invisibility();
+  }
+  &.hidden-md {
+    @media (min-width: @breakpoint-md) and (max-width: @breakpoint-md-max) {
+      .responsive-invisibility();
+    }
+  }
+  &.hidden-lg {
+    @media (min-width: @breakpoint-lg) and (max-width: @breakpoint-lg-max) {
+      .responsive-invisibility();
+    }
+  }
+  &.hidden-xl {
+    @media (min-width: @breakpoint-xl) {
+      .responsive-invisibility();
+    }
+  }
+}
+.hidden-md {
+  .responsive-visibility();
+  &.hidden-xs {
+    @media (max-width: @breakpoint-xs-max) {
+      .responsive-invisibility();
+    }
+  }
+  &.hidden-sm {
+    @media (min-width: @breakpoint-sm) and (max-width: @breakpoint-sm-max) {
+      .responsive-invisibility();
+    }
+  }
+  @media (min-width: @breakpoint-md) and (max-width: @breakpoint-md-max) {
+    .responsive-invisibility();
+  }
+  &.hidden-lg {
+    @media (min-width: @breakpoint-lg) and (max-width: @breakpoint-lg-max) {
+      .responsive-invisibility();
+    }
+  }
+  &.hidden-xl {
+    @media (min-width: @breakpoint-xl) {
+      .responsive-invisibility();
+    }
+  }
+}
+.hidden-lg {
+  .responsive-visibility();
+  &.hidden-xs {
+    @media (max-width: @breakpoint-xs-max) {
+      .responsive-invisibility();
+    }
+  }
+  &.hidden-sm {
+    @media (min-width: @breakpoint-sm) and (max-width: @breakpoint-sm-max) {
+      .responsive-invisibility();
+    }
+  }
+  &.hidden-md {
+    @media (min-width: @breakpoint-md) and (max-width: @breakpoint-md-max) {
+      .responsive-invisibility();
+    }
+  }
+  @media (min-width: @breakpoint-lg) and (max-width: @breakpoint-lg-max) {
+    .responsive-invisibility();
+  }
+  &.hidden-xl {
+    @media (min-width: @breakpoint-xl) {
+      .responsive-invisibility();
+    }
+  }
+}
+.hidden-xl {
+  .responsive-visibility();
+  &.hidden-xs {
+    @media (max-width: @breakpoint-xs-max) {
+      .responsive-invisibility();
+    }
+  }
+  &.hidden-sm {
+    @media (min-width: @breakpoint-sm) and (max-width: @breakpoint-sm-max) {
+      .responsive-invisibility();
+    }
+  }
+  &.hidden-md {
+    @media (min-width: @breakpoint-md) and (max-width: @breakpoint-md-max) {
+      .responsive-invisibility();
+    }
+  }
+  &.hidden-lg {
+    @media (min-width: @breakpoint-lg) and (max-width: @breakpoint-lg-max) {
+      .responsive-invisibility();
+    }
+  }
+  @media (min-width: @breakpoint-xl) {
+    .responsive-invisibility();
+  }
+}
+
+.visible-md-up,
+.hidden-sm-down {
+  @media (min-width: @breakpoint-md) {
+    .responsive-visibility();
+  }
+  @media (max-width: @breakpoint-sm-max) {
+    .responsive-invisibility();
+  }
+}
+.visible-lg-up,
+.hidden-md-down {
+  @media (min-width: @breakpoint-lg) {
+    .responsive-visibility();
+  }
+  @media (max-width: @breakpoint-md-max) {
+    .responsive-invisibility();
+  }
+}
+
+.hidden-md-up,
+.visible-sm-down {
+  @media (min-width: @breakpoint-md) {
+    .responsive-invisibility();
+  }
+  @media (max-width: @breakpoint-sm-max) {
+    .responsive-visibility();
+  }
+}
+
+.hidden-lg-up,
+.visible-md-down {
+  @media (min-width: @breakpoint-lg) {
+    .responsive-invisibility();
+  }
+  @media (max-width: @breakpoint-md-max) {
+    .responsive-visibility();
+  }
+}
+
+
+// Print utilities
+// -----------------------------------------
+.visible-print {
+  .responsive-invisibility();
+}
+
+// Orientation targeting
+// -----------------------------------------
+
+.visible-landscape,
+.hidden-portrait {
+  display: inherit !important; 
+}
+.hidden-landscape,
+.visible-portrait {
+  display: none !important;
+}
+
+// Specific visilbity for tables
+table.hidden-landscape, 
+table.visible-portrait {
+  display: table; 
+}
+thead.hidden-landscape, 
+thead.visible-portrait {
+  display: table-header-group !important; 
+}
+tbody.hidden-landscape, 
+tbody.visible-portrait {
+  display: table-row-group !important; 
+}
+tr.hidden-landscape, 
+tr.visible-portrait {
+  display: table-row !important; 
+}
+td.hidden-landscape, 
+td.visible-portrait,
+th.hidden-landscape,
+th.visible-portrait {
+  display: table-cell !important; 
+}
+
+@media only screen and (orientation: landscape) {
+  .visible-landscape,
+  .hidden-portrait { 
+	display: inherit !important; 
+  }
+
+  .hidden-landscape,
+  .visible-portrait { 
+	display: none !important; 
+  }
+
+  // Specific visilbity for tables
+  table.visible-landscape,
+  table.hidden-portrait {
+    display: table; 
+  }
+  thead.visible-landscape,
+  thead.hidden-portrait {
+    display: table-header-group !important;
+  }
+  tbody.visible-landscape,
+  tbody.hidden-portrait { 
+    display: table-row-group !important;
+  }
+  tr.visible-landscape,
+  tr.hidden-portrait { 
+    display: table-row !important;
+  }
+  td.visible-landscape, 
+  td.hidden-portrait,
+  th.visible-landscape,
+  th.hidden-portrait { 
+    display: table-cell !important;
+  } 
+}
+
+@media only screen and (orientation: portrait) {
+  .visible-portrait,
+  .hidden-landscape { 
+    display: inherit !important;
+  }
+
+  .hidden-portrait,
+  .visible-landscape { 
+    display: none !important;
+  }
+
+  // Specific visilbity for tables
+  table.visible-portrait, 
+  table.hidden-landscape { 
+    display: table;
+  }
+  thead.visible-portrait, 
+  thead.hidden-landscape {
+    display: table-header-group !important;
+  }
+  tbody.visible-portrait, 
+  tbody.hidden-landscape { 
+    display: table-row-group !important; 
+  }
+  tr.visible-portrait, 
+  tr.hidden-landscape { 
+    display: table-row !important; 
+  }
+  td.visible-portrait, 
+  td.hidden-landscape,
+  th.visible-portrait,
+  th.hidden-landscape { 
+    display: table-cell !important;
+  }
+}
+
+
+// Touch-enabled device targeting
+// -----------------------------------------
+
+.visible-touch,
+.touch .hidden-touch {
+  display: none !important; 
+}
+.hidden-touch 
+.touch .visible-touch {
+  display: inherit !important;
+}
+
+// Specific visilbity for tables
+table.hidden-touch,
+.touch table.visible-touch {
+  display: table;
+}
+thead.hidden-touch,
+.touch thead.visible-touch {
+  display: table-header-group !important;
+}
+tbody.hidden-touch,
+.touch tbody.visible-touch {
+  display: table-row-group !important; 
+}
+tr.hidden-touch,
+.touch tr.visible-touch {
+  display: table-row !important;
+}
+td.hidden-touch,
+.touch td.visible-touch,
+th.hidden-touch,
+.touch th.visible-touch {
+  display: table-cell !important;
+}

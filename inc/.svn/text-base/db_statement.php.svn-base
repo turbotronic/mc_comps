@@ -1,0 +1,59 @@
+<?php
+/* 
+ * 'The Count' XML Creator { includes/db_statement.php }
+ * This file creates a MySQL database object.
+ * Author: Jonathan Boho
+ * Created: Feb. 22, 2011
+ * Modifed: March 2, 2011
+*/
+class DB_Statement {
+	public $query;
+	protected $dbh; // database handler
+	public $result;
+	
+	public function __construct($dbh, $query)
+	{
+		$this->query = $query;
+		$this->dbh = $dbh;
+		if(!is_resource($dbh)) {
+			throw new MySQLException("Invalid database connection.");
+		}
+	}
+
+	public function fetch_row()
+	{
+		if (!$this->result) {
+			throw new MySQLException("Query not executed.");
+		}
+		return mysql_fetch_row($this->result);
+	}
+	
+	public function fetch_array()
+	{
+		return mysql_fetch_assoc($this->result);
+	}
+	
+	public function fetch_all_array()
+	{
+		$return_array = array();
+		while ($row = $this->fetch_array($this->result)) {
+			$return_array[] = $row;
+		}
+		return $return_array;
+	}
+	
+	// this function returns the num of rows in a query.
+	// if the second argument is true, the function will return an actual number, else it will return a Boolean value.
+	public function num_rows($return_num = true)
+	{
+		$rows = mysql_num_rows($this->result); 
+		if ($return_num) { // if return_num is true (default)
+			return $rows; // return the number of rows
+		}
+		else {
+			return ($rows>0) ? true: false; // if there are rows returned, return boolean
+		}
+	}
+
+}
+?>
