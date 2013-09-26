@@ -5,19 +5,28 @@
 		<div class="container">
 		    <p>&copy; Company 2012</p>
 		</div><!-- .container -->
-		<!-- FACEBOOK IMAGE -->
-		<!-- <img style="display:none;" src="<?php echo BASE_URL . DS . IMG_DIR; ?>/FACEBOOKFILEHERE" alt="" /> -->
+		<!-- FACEBOOK IMAGE <?php echo IMG_DIR; ?>/facebook.jpg -->
+		<img style="display:none;" src="" alt="This the icon for the article when viewed on Facebook" />
 	</footer><!-- #site-footer -->
+	
 	<!-- JAVASCRIPTS -->
+	
 	<!-- JQUERY: Grab Google CDN's jQuery. fall back to local if necessary -->
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
-	<script>window.jQuery || document.write('<script src="<?php echo BASE_URL . DS . JS_DIR; ?>/base/jquery.js"><\/script>')</script>
-	<script src="http://code.jquery.com/jquery-migrate-1.1.0.min.js"></script>
-	<script src="<?php echo BASE_URL . DS . JS_DIR; ?>/plugins/bootstrap.min.js"></script>
-	<!-- ADD FUNCTIONALITY FOR PSEUDO SELECTORS IN IE 6-8 -->
-	<!--[if (gte IE 6)&(lte IE 8)]>
-	  <script type="text/javascript" src="<?php echo BASE_URL . DS . JS_DIR; ?>/ie/ie.min.js"></script>
+	<script>window.jQuery || document.write('<script src="<?php echo JS_DIR; ?>/lib/jquery-2.0.0.min.js"><\/script>')</script>
+	
+	<!-- OMNITURE -->
+	<script type="text/javascript">
+	function omniture_track(param){
+	    frames['click_iframe'].location.href = 'omniture.php?ne=' + param;
+	};
+	</script>
+	<!--[if lt IE 9]>
+	  <script src="<?php echo JS_DIR; ?>/ie/selectivizr.js"></script>
+	  <script src="<?php echo JS_DIR; ?>/ie/respond.js"></script>
 	<![endif]-->
-	<script src="<?php echo BASE_URL . DS . JS_DIR; ?>/script.js"></script>
+	<script src="<?php echo JS_DIR; ?>/plugins/bootstrap.min.js"></script>
+	<script src="<?php echo JS_DIR; ?>/plugins/foundation.min.js"></script>
+	<script src="<?php echo JS_DIR; ?>/script.js"></script>
 </body>
 </html>
