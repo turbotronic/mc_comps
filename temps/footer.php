@@ -19,7 +19,6 @@
 	<![endif]-->
 	<script src="<?php echo JS_DIR; ?>/plugins/bootstrap.min.js"></script>
 	<script src="<?php echo JS_DIR; ?>/plugins/packery.min.js"></script>
-	<script src="<?php echo JS_DIR; ?>/script.js"></script>
 	
 	<script type="text/javascript">
 
@@ -32,26 +31,29 @@
 		pckry = new Packery(container, pckryOptions)
 
 	$(function() {
-		$.each($('.share-toggle'), function() {
-			$(this).on('click', function(e){
-				e.preventDefault();
-				$(this).closest($('.share-tools ul')).toggleClass('active');
-				$(this).closest($('.meta')).find($('p')).toggleClass('active');
-			});
-		});
-
-		$.each($('.toggle'), function() {
+		var $shareToggles = $('#container').find($('.share-toggle')),
+		     $headerShareToggle = $('#site-header').find($('.share-toggle')),
+		     $headerSearchToggle = $('#site-header').find($('.search-toggle'));
+		
+		$.each($shareToggles, function() {
 			$(this).on('click', function(e){
 				e.preventDefault();
 				$(this).parent().toggleClass('active');
 			});
 		});
-
-		// $('.toggle').on('click', function(e){
-		// 	console.log('click');
-		// 	e.preventDefault();
-		// 	$(this).parent().toggleClass('active');
-		// });
+		$headerShareToggle.on('click', function(e){
+			$('#site-header').toggleClass('share-active').removeClass('search-active');
+		});
+		$headerSearchToggle.on('click', function(e){
+				$('#site-header').toggleClass('search-active').removeClass('share-active');
+		});
+		$('.share-tools').tooltip({
+	      selector: "[data-toggle=tooltip]",
+	      placement: 'bottom',
+	      container: "body",
+	      delay: { show: 500, hide: 0 }
+	    })
+		
 	});
 
 	</script>

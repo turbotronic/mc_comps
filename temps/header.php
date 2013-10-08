@@ -27,11 +27,25 @@
 	<!-- Prompt IE 6-7 users to install Chrome Frame.        chromium.org/developers/how-tos/chrome-frame-getting-started -->
 	<!--[if lt IE 8]><p class="chromeframe">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 	<!-- <a class="sr-only" href="#content">Skip navigation</a> -->
-	<header role="banner">
+	<header id="site-header" role="banner">
 	  <div class="container">
-		<a class="pull-left logo" href="#"><img src="img/logo.png" alt="" /></a>
-			<button class="btn primary lg square pull-right"><span class="glyphicon glyphicon-share-alt"><span class="sr-only">Share</span></span></button>
-			<button class="btn primary lg square pull-right"><span class="glyphicon glyphicon-search"><span class="sr-only">Search</span></span></button>
-		</div>
+		<a class="logo" href="#"><img src="img/logo.png" alt="" /></a>
+		<div class="share-area">
+			<button class="share-toggle"><span class="glyphicon glyphicon-share-alt"><span class="sr-only">Share</span></span></button>
+			<div class="share-tools">
+				<ul>
+					<li data-toggle="tooltip" data-placement="bottom" data-original-title="Visit Denver Media Center on Facebook" title="Visit Denver Media Center on Facebook"><a class="fc-webicon facebook large" href=""><span class="sr-only">Facebook</span></a></li>
+					<li data-toggle="tooltip" data-placement="bottom" data-original-title="Follow us at @dpmediacenter on Twitter" title="Follow us at @dpmediacenter on Twitter"><a class="fc-webicon twitter large" href=""><span class="sr-only">Twitter</span></a></li>
+					<li data-toggle="tooltip" data-placement="bottom" data-original-title="Follow us on Google Plus" title="Follow us on Google Plus" ><a class="fc-webicon googleplus large" href=""><span class="sr-only">Google Plus</span></a></li>
+				</ul>
+			</div> <!-- .share-tools -->
+		</div> <!-- .share-area -->
+		<div class="search-area">
+			<button class="search-toggle"><span class="glyphicon glyphicon-search"><span class="sr-only">Search</span></span></button>
+			<div class="search-field">
+				<input type="text" />
+			</div>
+		</div> <!-- .search-area -->
+	</div> <!-- .container -->
 	</header>
 	<div id="container">
