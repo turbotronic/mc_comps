@@ -18,7 +18,7 @@
     <meta property="og:url" content="<?php echo BASE_URL; ?>"/>
     <meta property="og:image" content=""/>
 	<!-- MODERNIZER -->
-	<script src="<?php echo JS_DIR; ?>/lib/modernizr-2.6.2.js"></script>
+	<script src="<?php echo JS_DIR; ?>/lib/modernizr.js"></script>
 	<!-- STYLESHEETS -->
 	<link rel="stylesheet" href="<?php echo BASE_URL; ?>/style.css" media="screen"/>
 </head>
@@ -27,8 +27,14 @@
 	<!--[if lt IE 8]><p class="chromeframe">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 	<a class="sr-only" href="#content">Skip navigation</a>
 	<header id="site-header">
-		<hr>
 		<div class="container">
+			<a href="<?php echo BASE_URL; ?>/index.php" class="branding">Media Center :: Denver</a>
+			<nav class="settings-nav">
+				<ul class="nav pills">
+					<li><a href="">Login/Register</a></li>
+					<li><a href=""></a></li>
+				</ul>
+			</nav>
 		</div> <!-- .container -->
 	</header>
 	<div id="content">
