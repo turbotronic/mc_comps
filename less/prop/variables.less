@@ -314,7 +314,7 @@
 // -------------------------
 
 // Basics of a navbar
-@navbar-height:                    50px;
+@navbar-height:                    48px;
 @navbar-margin-bottom:             @line-height-computed;
 @navbar-default-color:             #777;
 @navbar-default-bg:                #f8f8f8;
@@ -486,19 +486,19 @@
 
 // Popovers
 // -------------------------
-@popover-bg:                          #fff;
+@popover-bg:                          @gray-dark;
 @popover-max-width:                   276px;
-@popover-border-color:                rgba(0,0,0,.2);
-@popover-fallback-border-color:       #ccc;
+@popover-border-color:                @border-color;
+@popover-fallback-border-color:       @border-color;
 
-@popover-title-bg:                    darken(@popover-bg, 3%);
+@popover-title-bg:                    darken(@popover-bg, 10%);
 
-@popover-arrow-width:                 10px;
-@popover-arrow-color:                 #fff;
+@popover-arrow-width:                 20px;
+@popover-arrow-color:                 @gray-dark;
 
 @popover-arrow-outer-width:           (@popover-arrow-width + 1);
-@popover-arrow-outer-color:           rgba(0,0,0,.25);
-@popover-arrow-outer-fallback-color:  #999;
+@popover-arrow-outer-color:           @border-color;
+@popover-arrow-outer-fallback-color:  @border-color;
 
 
 // Labels
@@ -519,15 +519,15 @@
 // -------------------------
 @modal-inner-padding:         20px;
 
-@modal-title-padding:         15px;
+@modal-title-padding:         20px;
 @modal-title-line-height:     @line-height-base;
 
-@modal-content-bg:                             #fff;
-@modal-content-border-color:                   rgba(0,0,0,.2);
-@modal-content-fallback-border-color:          #999;
+@modal-content-bg:                             @body-bg;
+@modal-content-border-color:                   @brand-primary;
+@modal-content-fallback-border-color:          @brand-primary;
 
 @modal-backdrop-bg:           #000;
-@modal-header-border-color:   #e5e5e5;
+@modal-header-border-color:   @gray-dark;
 @modal-footer-border-color:   @modal-header-border-color;
 
 
@@ -669,9 +669,9 @@
 
 // Close
 // ------------------------
-@close-color:                 #000;
+@close-color:                 #fff;
 @close-font-weight:           bold;
-@close-text-shadow:           0 1px 0 #fff;
+@close-text-shadow:           0 1px 0 #000;
 
 
 // Code

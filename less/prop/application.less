@@ -1,17 +1,19 @@
-.share-toggle,
-.search-toggle {
+[class*="-toggle"] {
   .btn();
   .button-variant(#fff; @brand-primary; @brand-primary; #fff);
   padding: 9px;
-  .square(48px);
-  .transition(all 0.2s linear);
+  .square(@navbar-height);
+  .transition(all 0.2s ease-out);
   margin-right: 1px;
   .glyphicon {
     .font-size(24px);
   }
 }
+[class*="-toggle"].active {
+  background: #91cbff;
+}
 .share-tools {
-  .transition(all 0.1s linear);
+  .transition(all 0.1s ease-out);
   overflow:hidden;
   ul {
     .clearfix();
@@ -64,7 +66,7 @@
 
 .meta {
   overflow:hidden;
-  height: 48px;
+  height: @navbar-height;
   background: @gray-dark;
   border: 1px solid @border-color;
   border-width: 1px 0;
@@ -76,8 +78,8 @@
     color: @gray;
     font-family: @headings-font-family;
     .font-size(10px);
-    line-height: 48px;
-    .transition(all 0.2s linear);
+    line-height: @navbar-height;
+    .transition(all 0.2s ease-out);
     .text-overflow();
   }
   .category { 
@@ -94,7 +96,7 @@
   }
   &.active {
     p {
-      .transition(all 0.2s linear);
+      .transition(all 0.2s ease-out);
       left:-300px;
     }
     .share-toggle {
@@ -102,7 +104,7 @@
     }
     .share-tools {
       width: 192px;
-      .transition(all 0.1s linear);
+      .transition(all 0.1s ease-out);
      }
   }
 }
@@ -157,17 +159,17 @@ h3 {
 .logo {
   position: absolute;
   left: 8px;
-  height: 48px;
+  height: @navbar-height;
   display: block;
-    .transition(all .5s linear);
+    .transition(all .5s ease-out);
     > img {
       margin-top: 11px;
     }
 }
-header,
-footer {
+#site-header,
+#site-footer {
   .clearfix();
-  z-index: 2000;
+  z-index: @zindex-navbar;
   background: #000;
   position: fixed;
   left: 0;
@@ -175,8 +177,8 @@ footer {
   color: #fff;
 
 }
-header {
-  height: 49px;
+#site-header {
+  height: (@navbar-height + 1);
   top: 0;
   border-bottom: 1px solid @border-color;
   .share-area,
@@ -187,7 +189,7 @@ header {
   &.search-active, {
     .logo {
       left: -300px;
-      .transition(all .2s linear);
+      .transition(all .2s ease-out);
     }
   }
   &.share-active {
@@ -199,7 +201,7 @@ header {
     }
     .search-field {
       width: 0;
-      .transition(all 0.1s linear);
+      .transition(all 0.1s ease-out);
     }
   }
   &.search-active {
@@ -208,7 +210,7 @@ header {
     }
     .search-field {
       width: 225px;
-      .transition(all 0.1s linear);
+      .transition(all 0.1s ease-out);
     }
     .share-tools {
       width: 0;
@@ -224,7 +226,7 @@ header {
   .share-tools {
     float: right;
     width: 0;
-    height: 48px;
+    height: @navbar-height;
   }
 }
 .search-area {
@@ -237,9 +239,9 @@ header {
     width: 0;
     background: rgba(145,203,255,.9);
     float: right;
-    height: 48px;
+    height: @navbar-height;
     border-left: 5px solid darken(@brand-primary, 20%);
-    .transition(all 0.1s linear);
+    .transition(all 0.1s ease-out);
     input {
       background:transparent;
       margin: 10px 5% 0;
@@ -258,7 +260,7 @@ header {
     }
   }
 }
-footer {
+#site-footer {
   bottom: 0;
   border-top: 1px solid @border-color;
   .box-shadow(0 -15px 30px rgba(0,0,0,.7)); 
@@ -291,11 +293,67 @@ footer {
       }
     }
   }
-
 }
 
 h1, h2, h3, h4, h5, h6 {
   > a {
     color:#fff;
   }
+}
+
+// settings stuff
+
+.popover {
+	.box-shadow(0 0 20px rgba(0,0,0,.9));
+}
+.popover-content {
+	padding: 0;
+	.side-nav {
+		margin: 0;
+		padding: 0;
+		background: transparent;
+		text-shadow: none;
+		> li > a {
+			border-top: 1px solid darken(@gray, 20%);
+			padding:8px 14px;
+			&:hover,
+			&:active,
+			&.active {
+				background: @brand-primary;
+				color: #fff;
+			}
+		}
+	}
+}
+.popover-title {
+	text-transform: uppercase;
+	h4 {
+		margin:@line-height-computed/4 0;
+	}
+}
+#reveal-login {
+	background:yellow;
+}
+
+.signin {
+	.modal-dialog {
+		width: 320px;
+		padding-top: (@navbar-height + 1);
+	}
+	.new-account-prompt {
+		margin-top: @line-height-computed;
+	}
+	.close {
+		font-size: 40px;
+		position: absolute;
+		top: 10px;
+		right: @modal-title-padding;
+	}
+	.modal-header {
+		padding-top: 10px;
+		padding-bottom: 10px;
+		h2 {
+			margin:(@line-height-computed/4) 0;
+		}
+	}
 }
