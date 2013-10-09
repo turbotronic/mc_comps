@@ -13,38 +13,43 @@
 @gray-dark:              #555;
 @gray:                   #808080;
 @gray-light:             #aaa;
-@gray-lighter:           #eee;
+@gray-lighter:           #e7e7e7;
 @gray-lightest:          #f5f5f5;
+
+// bordercolor:4f8abf
+// lighter: 91cbff
+// darker: 1260a6
 
 // Brand colors
 // -------------------------
 
-@brand-primary:         #428bca;
-@brand-secondary:       @gray-light;
-@brand-success:         #5cb85c;
-@brand-warning:         #f0ad4e;
+//@brand-primary:         #428bca;
+@brand-primary:         #37a2ff;
+@brand-secondary:       #ffa628;
+@brand-success:         #0da66c;
+@brand-warning:         #ffcb28;
 @brand-danger:          #d9534f;
 @brand-info:            #5bc0de;
 
 // Scaffolding
 // -------------------------
 
-@body-bg:               #fff;
-@text-color:            @gray-dark;
-@border-color:          #ddd;
-@disabled-color:        @gray-light;
+@body-bg:               #323232;
+@text-color:            @gray-lighter;
+@border-color:          #4f8abf;
+@disabled-color:        @gray;
 
 // Links
 // -------------------------
 
-@link-color:            @brand-primary;
+@link-color:            #93daff;
 @link-hover-color:      darken(@link-color, 15%);
 
 // Typography
 // -------------------------
 
-@font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
-@font-family-serif:       Georgia, "Times New Roman", Times, serif;
+@font-family-sans-serif:  "Oxygen", "Helvetica Neue", Arial, sans-serif;
+@font-family-serif:       "Georgia", "Times New Roman", Times, serif;
 @font-family-slab:        "Rockwell", "Times New Roman", Times, serif;
 @font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace;
 @font-family-base:        @font-family-sans-serif;
@@ -69,18 +74,18 @@
 @line-height-base:        1.618; // 22/14
 @line-height-computed:    floor(@font-size-base * @line-height-base); // ~22px
 
-@headings-font-family:    @font-family-base;
+@headings-font-family:    "Titillium Web", "Helvetica Neue", Arial, sans-serif;
 @headings-font-weight:    500;
 @headings-line-height:    1.1;
-@headings-color:          inherit;
+@headings-color:          #fff;
 
 // Iconography
 // -------------------------
 
-@icon-font-path:          "../fonts/";
+@icon-font-path:          "fonts/";
 @icon-font-name:          "glyphicons-halflings-regular";
 
-@web-icon-path:          "../img/webicons/";
+@web-icon-path:          "img/webicons/";
 
 // Components
 // -------------------------
@@ -98,9 +103,9 @@
 @line-height-large:              1.33;
 @line-height-small:              1.5;
 
-@border-radius-base:             3px;
-@border-radius-large:            6px;
-@border-radius-small:            3px;
+@border-radius-base:             0;
+@border-radius-large:            0;
+@border-radius-small:            0;
 
 @component-active-color:         #fff;
 @component-active-bg:            @brand-primary;
