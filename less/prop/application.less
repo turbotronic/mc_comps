@@ -285,7 +285,7 @@ h3 {
   .logo {
     left: 4px;
   }
-  header {
+  #site-header {
     &.share-active,
     &.search-active, {
       .logo {
@@ -305,6 +305,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .popover {
 	.box-shadow(0 0 20px rgba(0,0,0,.9));
+
 }
 .popover-content {
 	padding: 0;
@@ -331,9 +332,29 @@ h1, h2, h3, h4, h5, h6 {
 		margin:@line-height-computed/4 0;
 	}
 }
-#reveal-login {
-	background:yellow;
+
+.current-filter {
+	background: rgba(110,192,255,.15);
+	text-shadow: 1px 1px 1px rgba(0,0,0,.4);
+	.glyphicon {
+		font-size: 12px;
+		color: #fff;
+		margin-left: -3px;
+		margin-right: 5px;
+	}
 }
+
+.filter-toggle {
+	.popover {
+		right: 4px;
+	}
+	.side-nav {
+		li.divider {
+			border-top-width: 2px;
+		}
+	}
+}
+
 
 .signin {
 	.modal-dialog {
