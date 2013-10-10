@@ -1,0 +1,129 @@
+.main-menu {
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  bottom: (@navbar-height + 2);
+  width: 100%;
+  .clearfix();
+  background: #000;
+  li {
+    overflow: hidden;
+    display: inline-block;
+    width: 33.33333%;
+    height: 120px;
+    position: absolute;
+    left: 0;
+    bottom: -180px;
+    .transition(all 0.2s ease-in-out);
+    .opacity(0);
+    -webkit-transform: skew(-90deg, 0deg);
+    -moz-transform: skew(-90deg, 0deg);
+    -o-transform: skew(-90deg, 0deg);
+    -ms-transform: skew(-90deg, 0deg);
+    transform: skew(-90deg, 0deg);
+     &.news {
+	    a {
+          background: @brand-primary;
+		}
+        .transition-delay(.6s);
+     }
+     &.sports {
+	    a {
+          background: @brand-secondary;
+		}
+        .transition-delay(.5s);
+     }
+     &.entertainment {
+	    a {
+          background: @brand-warning;
+		}
+        .transition-delay(.4s);
+     }
+     &.projects {
+	    a {
+          background: @brand-info;
+		}
+        .transition-delay(.3s);
+     }
+     &.images {
+	    a {
+          background: @brand-danger;
+		}
+        .transition-delay(.2s);
+     }
+     &.video {
+	    a {
+          background: @brand-success;
+		}
+        .transition-delay(.1s);
+     }
+    a {
+      display: block;
+      border: 1px solid @gray-dark;
+      width: 100%;
+      margin: 0;  
+      color: #fff;
+      text-align: center;
+      .transition(@transition-default);
+      &:hover {
+        text-decoration: none;
+        background: @gray-darker;
+        .transition(@transition-default);
+      }
+      .glyphicon {
+        display: block;
+        margin: 0 auto 10px;
+        padding-top: 20px;
+        font-size: 48px;
+      }
+      .menu-title {
+        display: block;
+        padding-bottom: 20px;
+      }
+    }
+  }
+}
+
+.main-menu.active {
+    li {
+    .opacity(1);
+
+    -webkit-transform: skew(0deg, 0deg);
+    -moz-transform: skew(0deg, 0deg);
+    -o-transform: skew(0deg, 0deg);
+    -ms-transform: skew(0deg, 0deg);
+    transform: skew(0deg, 0deg);
+
+    .transition(all 0.4s ease-in-out);
+       &.news {
+         left: 0;
+         bottom: 120px;
+         .transition-delay(.1s);
+       }
+       &.sports {
+         left:33.33333%;
+         bottom: 120px;
+         .transition-delay(.2s);
+       }
+       &.entertainment {
+         left:66.66667%;
+         bottom: 120px;
+         .transition-delay(.3s);
+       }
+       &.projects {
+         left: 0;
+         bottom: 0;
+         .transition-delay(.4s);
+       }
+       &.images {
+         left:33.33333%;
+         bottom: 0;
+         .transition-delay(.5s);
+       }
+       &.video {
+         left:66.66667%;
+         bottom: 0;
+         .transition-delay(.6s);
+       }
+    }
+}

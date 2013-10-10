@@ -1,0 +1,97 @@
+// Content home page styles
+// -----------------------------------------
+
+.container-packery {
+  padding: 90px 0;
+  margin: 0 auto;
+  min-width: 320px;
+  max-width: 1280px;
+  .col {
+    margin-bottom: 30px;
+//    transform:scale(0.25,0.25);
+//    -ms-transform:scale(0.25,0.25); /* IE 9 */
+//    -webkit-transform:scale(0.25,0.25); /* Safari and Chrome */
+    .transition(opacity 0.5s ease-out);
+//    .transition(-webkit-transform 0.5s ease-in);
+//    .transition(-ms-transform 0.5s ease-in);
+//    .transition(transform 0.5s ease-in);
+    .opacity(0);
+  }
+  &.ready {
+    .col {
+      .opacity(1);
+//      transform:scale(1,1);
+//      -ms-transform:scale(1,1); /* IE 9 */
+//      -webkit-transform:scale(1,1); /* Safari and Chrome */
+    .transition(opacity 0.5s ease-out);
+//    .transition(-webkit-transform 0.5s ease-in);
+//    .transition(-ms-transform 0.5s ease-in);
+//    .transition(transform 0.5s ease-in);
+    }
+  }
+}
+
+
+// Home page blocks
+// -----------------------------------------
+.block-refer {
+  border-top: 1px solid @border-color;
+  background: @gray-darker;
+  color: @gray;
+  font-weight: @font-weight-base;
+  h3 {
+    padding: 0 12px;
+  }
+  img { 
+    width: 100%; // temp
+    max-width: none; // temp!!!
+  }
+}
+
+
+// Data & Information
+// -----------------------------------------
+.category,
+.timestamp {
+  text-transform: uppercase;
+  font-size: 12px;
+}
+.excerpt {
+  padding: 0 12px 2px;
+}
+.meta {
+  overflow:hidden;
+  height: @navbar-height;
+  background: @gray-dark;
+  border: 1px solid @border-color;
+  border-width: 1px 0;
+  p {
+    position: absolute;
+    left: 0;
+    margin: 0;
+    margin-right: (@zipper-btn-width + 10px);
+    padding: 0 10px;
+    color: @gray;
+    font-family: @headings-font-family;
+    .font-size(10px);
+    line-height: @navbar-height;
+    .transition(all 0.3s linear);
+    .text-overflow();
+  }
+  .category {
+    margin-right: .5em;
+  }
+  .share-zipper {
+    position: absolute;
+    right: 0;
+  }
+  &.active {
+    p {
+      .transition(all 1s linear);
+      left: -1200px;
+    }
+    .share-zipper {
+      width: 240px;
+    }
+  }
+}

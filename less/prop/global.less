@@ -1,0 +1,68 @@
+// Global overrides
+// -----------------------------------------
+
+.container {
+  padding: 0;
+  min-width: 320px;
+}
+@media all and (min-width: 600px) {
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+// Headings
+
+h1, h2, h3, h4, h5, h6 {
+  > a {
+    color:#fff;
+  }
+}
+
+// Popovers
+
+.popover {
+  .box-shadow(0 0 20px rgba(0,0,0,.9));
+}
+.popover-content {
+  padding: 0;
+  .side-nav {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    text-shadow: none;
+    > li > a {
+      border-top: 1px solid darken(@gray, 20%);
+      padding:8px 14px;
+      &:hover,
+      &:active,
+      &.active {
+        background: @brand-primary;
+        color: #fff;
+      }
+    }
+  }
+}
+.popover-title {
+  text-transform: uppercase;
+  h4 {
+    margin:@line-height-computed/4 0;
+  }
+}
+
+
+// Global objects
+// -----------------------------------------
+
+[class*="-toggle"] {
+  .btn();
+  .button-variant(#fff; @brand-primary; @brand-primary; #fff);
+  padding: 9px;
+  .square(@navbar-height);
+  .transition(all 0.2s ease-out);
+  margin-right: 1px;
+  .glyphicon {
+    .font-size(24px);
+  }
+}

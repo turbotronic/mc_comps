@@ -1,0 +1,227 @@
+// Global header and footer styles
+// -----------------------------------------
+
+#site-header,
+#site-footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: @zindex-navbar;
+  height: (@navbar-height + 1);
+  background: #000;
+  border: 1px solid @border-color;
+  color: #fff;
+}
+#site-header {
+  top: 0;
+  border-width: 0 0 1px 0;
+  [class*="-zipper"]  {
+    float: right;
+  }
+  .share-zipper {
+    margin-left: 1px;
+  }
+}
+#site-footer {
+  bottom: 0;
+  border-width: 1px 0 0 0;
+}
+
+
+// Header elements
+// -----------------------------------------
+
+.branding {
+  display: block;
+  position: absolute;
+  left: 8px;
+  height: @navbar-height;
+  .transition(all .5s ease-in-out);
+  > img {
+    margin-top: 11px;
+  }
+}
+
+// Sliders
+[class*="-zipper"]  {
+  .clearfix();
+  overflow: hidden;
+  width: @zipper-btn-width;
+  height: @zipper-height;
+  .transition(@transition-default);
+  button {
+  position: relative;
+    float: right;
+    width: @zipper-btn-width;
+  }
+}
+.drawer {
+  position: absolute;
+  left: 0;
+  input {
+    position: relative;
+    width: 200px;
+    margin: 10px 10px 0;
+    padding-bottom: 5px;
+    background: transparent;
+    text-shadow: none;
+    border: 0;
+    border-bottom: 1px solid @border-color;
+    color: #fff;
+    .font-size(18px);
+    &:focus {
+      outline: 0;
+      border: 0;
+      border-bottom: 1px solid #fff;
+    }
+  } 
+}
+
+// Search and social
+.search-zipper {
+  width: (@zipper-btn-width + 5px);
+  background: rgba(145,203,255,.9);
+  border-left: 5px solid darken(@brand-primary, 22%);
+}
+.share-zipper {
+  ul {
+    .clearfix();
+    li {
+      display: inline;
+      float: left;
+      a {
+        display: block;
+        &.facebook {
+          background-color: #4B71B8!important;
+        }
+        &.twitter {
+          background-color: #4BD0EF!important;
+        }
+        &.googleplus {
+          background-color: #E16D35!important;
+        }
+        &.mail {
+          background-color: #eee!important;
+        }
+        &.fc-webicon {
+          border-radius: 0;
+          .box-shadow(0);
+          margin: 0;
+          &:hover {
+            .opacity(.8);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Header behaviors
+// -----------------------------------------
+
+// Move branding aside
+#site-header {
+  &.share-active,
+  &.search-active, {
+    .branding {
+      left: -300px;
+      .transition(@transition-default);
+    }
+  }
+
+  // Expand drawers
+  &.share-active {
+    .share-zipper {
+      width: 193px;
+      .transition(@transition-default);
+    }
+  }
+
+  &.search-active {
+    .search-zipper {
+      width: 270px;
+      .transition(@transition-default);
+    }
+  }
+
+}
+
+// Touch exception
+.touch #site-header {
+  &.search-active {
+    .search-zipper {
+      width: 320px;
+      .transition(@transition-default);
+      .drawer {
+        input {
+          width: (290px - @zipper-btn-width);
+        } 
+      }
+    }
+  }
+}
+
+// Media queries
+@media all and (min-width: 600px) {
+  .branding {
+    left: 4px;
+  }
+  #site-header {
+    &.share-active,
+    &.search-active, {
+      .branding {
+        left: 4px;
+      }
+    }
+  }
+}
+
+
+// Footer elements
+// -----------------------------------------
+
+// Filter panel
+.filter-toggle {
+  .popover {
+    right: 4px;
+  }
+  .side-nav {
+    li.divider {
+      border-top-width: 2px;
+    }
+  }
+}
+.current-filter {
+  background: rgba(110,192,255,.15);
+  text-shadow: 1px 1px 1px rgba(0,0,0,.4);
+  .glyphicon {
+    font-size: 12px;
+    color: #fff;
+    margin-left: -3px;
+    margin-right: 5px;
+  }
+}
+
+// Settings panel
+.signin {
+  .modal-dialog {
+    width: 320px;
+    padding-top: (@navbar-height + 1);
+  }
+  .new-account-prompt {
+    margin-top: @line-height-computed;
+  }
+  .close {
+    font-size: 40px;
+    position: absolute;
+    top: 10px;
+    right: @modal-title-padding;
+  }
+  .modal-header {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    h2 {
+      margin:(@line-height-computed/4) 0;
+    }
+  }
+}
