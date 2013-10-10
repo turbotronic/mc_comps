@@ -20,7 +20,7 @@ defined('DB_NAME')   ? null : define("DB_NAME", '');
 defined('BASE_URL')  ? null : define("BASE_URL", (!empty($_SERVER['HTTPS'])) ? "https://" . DS . $_SERVER['SERVER_NAME'].$uri[1] : "http://".$_SERVER['SERVER_NAME'] . DS . $uri[1]);
 
 defined('LOCAL_IP')  ? null : define("LOCAL_IP", $_SERVER['SERVER_ADDR']);
-defined('THE_TITLE')  ? null : define("THE_TITLE", '');
+defined('THE_TITLE')  ? null : define("THE_TITLE", 'Media Center Comps');
 
 
 // DIRECTORIES
