@@ -27,7 +27,6 @@
 	<![endif]-->
 	<script src="<?php echo JS_DIR; ?>/plugins/bootstrap.min.js"></script>
     <script src="<?php echo JS_DIR; ?>/plugins/packery.min.js"></script>
-
 	<script type="text/javascript">
 	var container = document.querySelector('#content'),
 	    pckryOptions = {
