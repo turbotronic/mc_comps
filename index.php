@@ -157,4 +157,62 @@
 		</div> <!-- .meta -->
 	</div> <!-- .block-refer -->
 </div> <!-- grid stuff -->
+  <div class="col sm-2 md-4 lg-3">
+	<div class="block-refer">
+		<a href=""><img src="img/test_img/img5.jpg" alt="" /></a>
+		<h3><a href="">Headline here in this space</a></h3>
+		<p class="excerpt">This is an excerpt for this story that goes into this space right here in this space, yes, ok.</p>
+		<div class="meta">
+			<button class="share-toggle"><span class="glyphicon glyphicon-share-alt"><span class="sr-only">Share</span></span></button>
+			<p><span class="category">In <a href="#">Sports</a></span><span class="timestamp">31 min ago</span></p>
+			<div class="share-tools">
+				<ul>
+
+					<li><a class="fc-webicon facebook large" href=""><span class="sr-only">Facebook</span></a></li>
+					<li><a class="fc-webicon twitter large" href=""><span class="sr-only">Twitter</span></a></li>
+					<li><a class="fc-webicon googleplus large" href=""><span class="sr-only">Google Plus</span></a></li>
+					<li><a class="fc-webicon mail large" href=""><span class="sr-only">Email</span></a></li>
+				</ul>
+			</div> <!-- .share-tools -->
+		</div> <!-- .meta -->
+	</div> <!-- .block-refer -->
+</div> <!-- grid stuff -->
+  <div class="col sm-2 md-4 lg-3">
+	<div class="block-refer">
+		<a href=""><img src="img/test_img/img6.jpg" alt="" /></a>
+		<h3><a href="">Headline here in this space</a></h3>
+		<p class="excerpt">This is an excerpt for this story that goes into this space right here in this space, yes, ok.</p>
+		<div class="meta">
+			<button class="share-toggle"><span class="glyphicon glyphicon-share-alt"><span class="sr-only">Share</span></span></button>
+			<p><span class="category">In <a href="#">Sports</a></span><span class="timestamp">31 min ago</span></p>
+			<div class="share-tools">
+				<ul>
+					<li><a class="fc-webicon facebook large" href=""><span class="sr-only">Facebook</span></a></li>
+					<li><a class="fc-webicon twitter large" href=""><span class="sr-only">Twitter</span></a></li>
+					<li><a class="fc-webicon googleplus large" href=""><span class="sr-only">Google Plus</span></a></li>
+					<li><a class="fc-webicon mail large" href=""><span class="sr-only">Email</span></a></li>
+				</ul>
+			</div> <!-- .share-tools -->
+		</div> <!-- .meta -->
+	</div> <!-- .block-refer -->
+</div> <!-- grid stuff -->
+  <div class="col sm-2 md-4 lg-3">
+	<div class="block-refer">
+		<a href=""><img src="img/test_img/img7.jpg" alt="" /></a>
+		<h3><a href="">Headline here in this space</a></h3>
+		<p class="excerpt">This is an excerpt for this story that goes into this space right here in this space, yes, ok.</p>
+		<div class="meta">
+			<button class="share-toggle"><span class="glyphicon glyphicon-share-alt"><span class="sr-only">Share</span></span></button>
+			<p><span class="category">In <a href="#">Sports</a></span><span class="timestamp">31 min ago</span></p>
+			<div class="share-tools">
+				<ul>
+					<li><a class="fc-webicon facebook large" href=""><span class="sr-only">Facebook</span></a></li>
+					<li><a class="fc-webicon twitter large" href=""><span class="sr-only">Twitter</span></a></li>
+					<li><a class="fc-webicon googleplus large" href=""><span class="sr-only">Google Plus</span></a></li>
+					<li><a class="fc-webicon mail large" href=""><span class="sr-only">Email</span></a></li>
+				</ul>
+			</div> <!-- .share-tools -->
+		</div> <!-- .meta -->
+	</div> <!-- .block-refer -->
+</div> <!-- grid stuff -->
 <?php require_once('temps/footer.php'); // load in footer ?>
