@@ -168,16 +168,15 @@ h3 {
 }
 #site-header,
 #site-footer {
-  .clearfix();
-  z-index: @zindex-navbar;
-  background: #000;
   position: fixed;
   left: 0;
   right: 0;
+  z-index: @zindex-navbar;
+  background: #000;
   color: #fff;
-
 }
 #site-header {
+  overflow: hidden;
   height: (@navbar-height + 1);
   top: 0;
   border-bottom: 1px solid @border-color;
@@ -375,19 +374,16 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
-
 .wheel {
-  //max-width: @site-max-width;
-  //margin: 0 auto;
-  //visibility: hidden;
-  //display: none;
-  //position: relative;
   position: fixed;
   z-index: 999;
   left: 0;
+  right: 0;
   bottom: (@navbar-height + 2);
-  width: 100%;
-  .clearfix();
+/*  height: 0;
+  background:#000;
+  .opacity(0);
+  .transition(all .5s ease-in-out);*/
   li {
     overflow: hidden;
     display: inline-block;
@@ -400,28 +396,27 @@ h1, h2, h3, h4, h5, h6 {
     .transition(all .2s ease-in-out);
 	  &.news {
 		background: @brand-primary;
-				transition-delay: .6s;
+		.transition-delay(.6s);
 	 }
 	  &.sports {
 		background: @brand-secondary;
-
-		transition-delay: .5s;
+		.transition-delay(.5s);
 	  }
 	  &.entertainment {
 		background: @brand-warning;
-		transition-delay: .4s;
+		.transition-delay(.4s);
 	  }
 	  &.projects {
 		background: @brand-info;
-		transition-delay: .3s;
+		.transition-delay(.3s);
 	  }
 	  &.images {
 		background: @brand-danger;
-		transition-delay: .2s;
+		.transition-delay(.2s);
 	  }
 	  &.video {
 		background: @brand-success;
-				transition-delay: .1s;
+		.transition-delay(.1s);
 	  }
 	  &:hover {
         background: rgba(32,32,32,.9)!important;
@@ -460,41 +455,44 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 .wheel.active {
+/*	height: 240px;
+	.opacity(1);
+	.transition(all .5s ease-in-out);*/
 	li {
 	  transform: rotate(0deg);
 	  -ms-transform: rotate(0deg); 
 	  -webkit-transform: rotate(0deg);
-	    .transition(all .2s ease-in-out);
+	  .transition(all .2s ease-in-out);
 	.opacity(1);
 	  &.news {
 		left: 0;
 		bottom: 120px;
-		transition-delay: .1s;
+		.transition-delay(.1s);
 	 }
 	  &.sports {
 		left:33.33333%;
 		bottom: 120px;
-				transition-delay: .2s;
+		.transition-delay(.2s);
 	  }
 	  &.entertainment {
 		left:66.66667%;
 		bottom: 120px;
-				transition-delay: .3s;
+		.transition-delay(.3s);
 	  }
 	  &.projects {
 		left: 0;
 		bottom: 0;
-				transition-delay: .4s;
+		.transition-delay(.4s);
 	  }
 	  &.images {
 		left:33.33333%;
 		bottom: 0;
-				transition-delay: .5s;
+		.transition-delay(.5s);
 	  }
 	  &.video {
 		left:66.66667%;
 		bottom: 0;
-		transition-delay: .6s;
+		.transition-delay(.6s);
 	  }
     }
 }
