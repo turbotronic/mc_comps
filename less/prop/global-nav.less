@@ -16,11 +16,6 @@
     bottom: -180px;
     .transition(all 0.2s ease-in-out);
     .opacity(0);
-    -webkit-transform: skew(-90deg, 0deg);
-    -moz-transform: skew(-90deg, 0deg);
-    -o-transform: skew(-90deg, 0deg);
-    -ms-transform: skew(-90deg, 0deg);
-    transform: skew(-90deg, 0deg);
      &.news {
 	    a {
           background: @brand-primary;
@@ -83,18 +78,31 @@
     }
   }
 }
+.no-touch {
+	.main-menu {
+		li {
+			-webkit-transform: skew(-90deg, 0deg);
+		    -moz-transform: skew(-90deg, 0deg);
+		    -o-transform: skew(-90deg, 0deg);
+		    -ms-transform: skew(-90deg, 0deg);
+		    transform: skew(-90deg, 0deg);
+		}
+	}
+	.main-menu.active {
+	    li {
+	    -webkit-transform: skew(0deg, 0deg);
+	    -moz-transform: skew(0deg, 0deg);
+	    -o-transform: skew(0deg, 0deg);
+	    -ms-transform: skew(0deg, 0deg);
+	    transform: skew(0deg, 0deg);
+	   }
+	}
+}
 
 .main-menu.active {
     li {
-    .opacity(1);
-
-    -webkit-transform: skew(0deg, 0deg);
-    -moz-transform: skew(0deg, 0deg);
-    -o-transform: skew(0deg, 0deg);
-    -ms-transform: skew(0deg, 0deg);
-    transform: skew(0deg, 0deg);
-
-    .transition(all 0.4s ease-in-out);
+      .opacity(1);
+      .transition(all 0.4s ease-in-out);
        &.news {
          left: 0;
          bottom: 120px;

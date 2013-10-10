@@ -67,16 +67,17 @@
   border-width: 1px 0;
   p {
     position: absolute;
+    width: 100%;
     left: 0;
     margin: 0;
-    margin-right: (@zipper-btn-width + 10px);
-    padding: 0 10px;
+    padding: 0 (@zipper-btn-width + 10px) 0 10px;
     color: @gray;
     font-family: @headings-font-family;
     .font-size(10px);
     line-height: @navbar-height;
     .transition(all 0.3s linear);
     .text-overflow();
+
   }
   .category {
     margin-right: .5em;
