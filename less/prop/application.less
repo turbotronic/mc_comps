@@ -276,7 +276,6 @@ h3 {
   }
 }
 
-
 @media all and (min-width: 600px) {
   .container {
     padding-left: 15px;
@@ -301,11 +300,8 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-// settings stuff
-
 .popover {
 	.box-shadow(0 0 20px rgba(0,0,0,.9));
-
 }
 .popover-content {
 	padding: 0;
@@ -378,3 +374,134 @@ h1, h2, h3, h4, h5, h6 {
 		}
 	}
 }
+
+
+.wheel {
+  //max-width: @site-max-width;
+  //margin: 0 auto;
+  //visibility: hidden;
+  //display: none;
+  //position: relative;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  bottom: (@navbar-height + 2);
+  width: 100%;
+  .clearfix();
+  li {
+    overflow: hidden;
+    display: inline-block;
+    width: 33.33333%;
+    height: 120px;
+    position:absolute;
+    left: 0;
+    bottom: -180px;
+    .opacity(0);
+    .transition(all .2s ease-in-out);
+	  &.news {
+		background: @brand-primary;
+				transition-delay: .6s;
+	 }
+	  &.sports {
+		background: @brand-secondary;
+
+		transition-delay: .5s;
+	  }
+	  &.entertainment {
+		background: @brand-warning;
+		transition-delay: .4s;
+	  }
+	  &.projects {
+		background: @brand-info;
+		transition-delay: .3s;
+	  }
+	  &.images {
+		background: @brand-danger;
+		transition-delay: .2s;
+	  }
+	  &.video {
+		background: @brand-success;
+				transition-delay: .1s;
+	  }
+	  &:hover {
+        background: rgba(32,32,32,.9)!important;
+      }
+	
+	  transform: rotate(180deg);
+	  -ms-transform: rotate(180deg); 
+	  -webkit-transform: rotate(180deg);
+
+
+    a {
+      display:block;
+      //border: 1px solid @border-color;
+      width: 100%;
+      margin: 0;  
+	  color: #fff;
+	  .transition(all 0.25s ease);
+	  text-align: center;
+	  &:hover {
+        text-decoration: none;
+      }
+	  &:hover {
+        background: rgba(32,32,32,.9)!important;
+      }
+	  .glyphicon {
+		display: block;
+		margin: 0 auto 10px;
+		padding-top: 20px;
+		font-size: 48px;
+	  }
+	  .menu-title {
+		display: block;
+        padding-bottom: 20px;
+	  }
+    }
+  }
+}
+.wheel.active {
+	li {
+	  transform: rotate(0deg);
+	  -ms-transform: rotate(0deg); 
+	  -webkit-transform: rotate(0deg);
+	    .transition(all .2s ease-in-out);
+	.opacity(1);
+	  &.news {
+		left: 0;
+		bottom: 120px;
+		transition-delay: .1s;
+	 }
+	  &.sports {
+		left:33.33333%;
+		bottom: 120px;
+				transition-delay: .2s;
+	  }
+	  &.entertainment {
+		left:66.66667%;
+		bottom: 120px;
+				transition-delay: .3s;
+	  }
+	  &.projects {
+		left: 0;
+		bottom: 0;
+				transition-delay: .4s;
+	  }
+	  &.images {
+		left:33.33333%;
+		bottom: 0;
+				transition-delay: .5s;
+	  }
+	  &.video {
+		left:66.66667%;
+		bottom: 0;
+		transition-delay: .6s;
+	  }
+    }
+}
+
+.wheel-button.active i{
+  transform: rotate(135deg);
+  -ms-transform: rotate(135deg); /* IE 9 */
+  -webkit-transform: rotate(135deg); /* Safari and Chrome */
+}
+
