@@ -42,9 +42,8 @@
 		if (init) {
 			container.className += ' ready';
 			init = false;
-			console.log('init');
+			pckry.layout();
 		}
-		  console.log('layout is complete');
 		});
 		
 		// manually trigger initial layout
@@ -106,6 +105,7 @@
 		});
 		$headerSearchToggle.on('click', function(e){
 		  $('#site-header').toggleClass('search-active').removeClass('share-active');
+          ($('#site-header').hasClass('search-active')) ? $('#search-field').focus() : $('#search-field').blur();
 		});
 		
 		// tooltips

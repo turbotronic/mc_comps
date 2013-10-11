@@ -54,7 +54,7 @@
 		</div> <!-- #share-global -->
 		<div id="global-search" class="search-zipper">
 			<div class="drawer">
-				<input type="text" />
+				<input type="text" id="search-field"/>
 			</div>
 			<button class="search-toggle"><span class="glyphicon glyphicon-search"><span class="sr-only">Search</span></span></button>
 		</div> <!-- #search-global -->
