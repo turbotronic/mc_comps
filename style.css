@@ -6720,43 +6720,43 @@ fieldset[disabled] [class*="-toggle"].active {
   filter: alpha(opacity=0);
 }
 .main-menu li.news {
-  -webkit-transition-delay: 0.6s;
-  transition-delay: 0.6s;
+  -webkit-transition-delay: 0.3s;
+  transition-delay: 0.3s;
 }
 .main-menu li.news a {
   background: #37a2ff;
 }
 .main-menu li.sports {
-  -webkit-transition-delay: 0.5s;
-  transition-delay: 0.5s;
+  -webkit-transition-delay: 0.2s;
+  transition-delay: 0.2s;
 }
 .main-menu li.sports a {
   background: #ffa628;
 }
 .main-menu li.entertainment {
-  -webkit-transition-delay: 0.4s;
-  transition-delay: 0.4s;
+  -webkit-transition-delay: 0.1s;
+  transition-delay: 0.1s;
 }
 .main-menu li.entertainment a {
   background: #ffcb28;
 }
 .main-menu li.projects {
-  -webkit-transition-delay: 0.3s;
-  transition-delay: 0.3s;
+  -webkit-transition-delay: 0.6s;
+  transition-delay: 0.6s;
 }
 .main-menu li.projects a {
   background: #5bc0de;
 }
 .main-menu li.images {
-  -webkit-transition-delay: 0.2s;
-  transition-delay: 0.2s;
+  -webkit-transition-delay: 0.5s;
+  transition-delay: 0.5s;
 }
 .main-menu li.images a {
   background: #d9534f;
 }
 .main-menu li.video {
-  -webkit-transition-delay: 0.1s;
-  transition-delay: 0.1s;
+  -webkit-transition-delay: 0.4s;
+  transition-delay: 0.4s;
 }
 .main-menu li.video a {
   background: #0da66c;
@@ -6810,38 +6810,38 @@ fieldset[disabled] [class*="-toggle"].active {
 .main-menu.active li.news {
   left: 0;
   bottom: 120px;
-  -webkit-transition-delay: 0.1s;
-  transition-delay: 0.1s;
+  -webkit-transition-delay: 0.4s;
+  transition-delay: 0.4s;
 }
 .main-menu.active li.sports {
   left: 33.33333%;
   bottom: 120px;
-  -webkit-transition-delay: 0.2s;
-  transition-delay: 0.2s;
+  -webkit-transition-delay: 0.5s;
+  transition-delay: 0.5s;
 }
 .main-menu.active li.entertainment {
   left: 66.66667%;
   bottom: 120px;
-  -webkit-transition-delay: 0.3s;
-  transition-delay: 0.3s;
+  -webkit-transition-delay: 0.6s;
+  transition-delay: 0.6s;
 }
 .main-menu.active li.projects {
   left: 0;
   bottom: 0;
-  -webkit-transition-delay: 0.4s;
-  transition-delay: 0.4s;
+  -webkit-transition-delay: 0.1s;
+  transition-delay: 0.1s;
 }
 .main-menu.active li.images {
   left: 33.33333%;
   bottom: 0;
-  -webkit-transition-delay: 0.5s;
-  transition-delay: 0.5s;
+  -webkit-transition-delay: 0.2s;
+  transition-delay: 0.2s;
 }
 .main-menu.active li.video {
   left: 66.66667%;
   bottom: 0;
-  -webkit-transition-delay: 0.6s;
-  transition-delay: 0.6s;
+  -webkit-transition-delay: 0.3s;
+  transition-delay: 0.3s;
 }
 .container-packery {
   padding: 90px 0;
