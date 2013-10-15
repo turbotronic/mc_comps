@@ -44,7 +44,7 @@ $cachefile = CACHE_DIR . DS . $cachefile . CACHE_EXT;
 
 
 // COOKIES
-defined('COOKIE_NAME') ? null : define('COOKIE_NAME', '');
+defined('COOKIE_NAME') ? null : define('COOKIE_NAME', 'mediacenter_denver');
 
 
 // CONSTANTS
