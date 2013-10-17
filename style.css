@@ -4088,6 +4088,69 @@ fieldset[disabled] [class*="-toggle"].active {
   -webkit-transition-delay: 0.3s;
   transition-delay: 0.3s;
 }
+.moving-feed {
+  display: table;
+  position: absolute;
+  top: 0;
+  left: 75px;
+  right: 125px;
+  height: 48px;
+  line-height: 48px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.moving-feed:before,
+.moving-feed:after {
+  content: " ";
+  /* 1 */
+
+  display: table;
+  /* 2 */
+
+}
+.moving-feed:after {
+  clear: both;
+}
+.moving-feed:before,
+.moving-feed:after {
+  content: " ";
+  /* 1 */
+
+  display: table;
+  /* 2 */
+
+}
+.moving-feed:after {
+  clear: both;
+}
+.moving-feed h5 {
+  display: table-cell;
+  margin: 0;
+  padding-right: 5px;
+  line-height: 48px;
+  text-transform: uppercase;
+  font-weight: 500;
+  width: 25%;
+  text-align: right;
+}
+.moving-feed ul {
+  display: table-cell;
+  width: 75%;
+  -webkit-transition: top 0.5s ease-out;
+  transition: top 0.5s ease-out;
+}
+.moving-feed ul > li {
+  -webkit-transition: all 1s ease-out;
+  transition: all 1s ease-out;
+  position: relative;
+  left: 1000px;
+}
+.moving-feed ul > li.active {
+  left: 0;
+  -webkit-transition: all 1s ease-out;
+  transition: all 1s ease-out;
+}
 .container-packery {
   padding: 90px 0;
   margin: 0 auto;

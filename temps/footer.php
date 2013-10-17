@@ -1,7 +1,7 @@
 	<footer id="site-footer">
 		<div class="container">
-			<div id="ticker" class="moving-feed">
-				
+			<div id="ticker" class="moving-feed hidden-sm-down">
+
 			</div>
 			<button type="button" href="#wheel3" class="menu-toggle ne wheel-button"><span class="glyphicon glyphicon-list"><span class="sr-only">Menu</span></span></button>
 			<button type="button" data-container=".filter-toggle" data-toggle="popover" data-placement="auto top" data-header="Filters" data-html="true" data-title="<h4>Filters</h4>" data-content='<?php include('temps/ui/filters.php');?>' class="filter-toggle pull-right"><span class="glyphicon glyphicon-filter"><span class="sr-only">Filter</span></span></button>
@@ -40,6 +40,7 @@
 	</script>
 	
 	<script id="tickertpl" type="text/x-handlebars-template">
+		<h5>Breaking news from <a href="http://www.denverpost.com">The Denver Post</a>:</h5>
 		<ul class="ticker-feed">
 		{{#articles}}
 			<li id="{{id}}" title="{{link}}">
@@ -85,7 +86,7 @@
 	;(function (window, document, $) {
 		
 		
-		// Load the ticker
+		// TICKER STUFF
 		/////////////////////////////////
 		var baseURL = $(document).data('baseurl'),
 			currentURL = $(document).data('currenturl'),
@@ -93,19 +94,75 @@
 
 		$.ajaxSetup({ cache: false });
 
-		//loadLatest();
+		loadLatest();
 
 		function loadLatest(xmlFeed) {
 			var source, template, html;
 			var $target = $('#ticker');
 			xF = (xmlFeed == undefined) ? baseURL + '/inc/feed.php?feed=dp-news-breaking' : xmlFeed;
+			//xF = (xmlFeed == undefined) ? baseURL + '/inc/staticfeed.php' : xmlFeed;
 			currentLatestFeed = xF;
-			$.getJSON(xF, function(data) {
+			
+			var jqxhr = $.getJSON(xF, function(data) {
 				source  = $("#tickertpl").html(),
 				template = Handlebars.compile(source);
 				html = template(data);
 				$target.html(html); // add to zone 1
-			}); //getJSON
+			}); 
+			jqxhr.complete(function() {
+			  setTimeout(tickerGo, 1000);
+			});//getJSON
+		}
+		
+		var $ticker = $('#ticker'),
+		    containerPos = 0,
+		    currentIndex = 0,
+		    $tickerContainer,
+		    items,
+		    totalItems,
+		    currentItem,
+		    init = true;
+		
+		function tickerGo() {
+			if(init) {
+				$tickerContainer = $ticker.find('ul');
+				items = $ticker.find('li');
+				totalItems = items.length;
+				currentItem = $(items[currentIndex]);
+				init = false;
+				console.log('ticker!');
+			}
+			$ticker.find('li.active').removeClass('active');
+			currentItem.addClass('active');
+			setTimeout(moveTicker, 7000);
+		}
+		
+		function moveTicker() {
+			currentIndex ++;
+			containerPos = (containerPos - 48); 
+			currentItem = $(items[currentIndex]);
+			$tickerContainer.css({'top' : containerPos + 'px'});
+			if(currentIndex == (totalItems)) {
+				setTimeout(resetTicker, 500);
+			} else {
+				setTimeout(tickerGo, 500);
+			}
+		}
+		
+		function resetTicker() {
+			containerPos = 0;
+			currentIndex = 0;
+			currentItem = $(items[currentIndex]);
+			$ticker.find('li.active').removeClass('active');
+			$tickerContainer.css({'visiblity' : 'hidden'});
+			setTimeout(reloadTicker, 500);
+		}
+		function reloadTicker(){
+			$tickerContainer.css({
+				'visiblity' : 'visible',
+				'top' : '0'
+			});
+			loadLatest(currentLatestFeed);
 		}
 		
 		// Footer toggles

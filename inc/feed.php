@@ -2,7 +2,7 @@
 if(isset($_REQUEST['feed'])) {
 	$feed_url = "http://feeds.denverpost.com/" . $_REQUEST['feed'];
 } else {
-	$feed_url = 'http://extras.denverpost.com/media/MRSS/Breaking_News_230605.xml';
+	$feed_url = 'http://feeds.denverpost.com/dp-news-breaking';
 }
 
 // RECEIVE FILE AND CLEAN
@@ -149,6 +149,5 @@ function processSafeText ( $str ) {
 	$str = str_replace('”','&quot;',$str);
 	return $str;
 }
-
 // OUTPUT
 echo $json;
