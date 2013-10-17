@@ -1,5 +1,8 @@
 	<footer id="site-footer">
 		<div class="container">
+			<div id="ticker" class="moving-feed">
+				
+			</div>
 			<button type="button" href="#wheel3" class="menu-toggle ne wheel-button"><span class="glyphicon glyphicon-list"><span class="sr-only">Menu</span></span></button>
 			<button type="button" data-container=".filter-toggle" data-toggle="popover" data-placement="auto top" data-header="Filters" data-html="true" data-title="<h4>Filters</h4>" data-content='<?php include('temps/ui/filters.php');?>' class="filter-toggle pull-right"><span class="glyphicon glyphicon-filter"><span class="sr-only">Filter</span></span></button>
 			<button type="button" data-container=".settings-toggle" data-toggle="popover" data-placement="top" data-header="Settings" data-html="true" data-title="<h4>Settings</h4>" data-content='<?php include('temps/ui/settings-menu.php');?>' class="settings-toggle pull-right"><span class="glyphicon glyphicon-cog"><span class="sr-only">Settings</span></span></button> 
@@ -25,9 +28,35 @@
 	  <script src="<?php echo JS_DIR; ?>/ie/selectivizr.js"></script>
 	  <script src="<?php echo JS_DIR; ?>/ie/respond.js"></script>
 	<![endif]-->
+    <script src="<?php echo JS_DIR; ?>/lib/handlebars.js"></script>
 	<script src="<?php echo JS_DIR; ?>/plugins/bootstrap.min.js"></script>
     <script src="<?php echo JS_DIR; ?>/plugins/packery.min.js"></script>
+    <script src="<?php echo JS_DIR; ?>/plugins/jquery.cookie.min.js"></script>
+
 	<script type="text/javascript">
+		$(document).data('cookiename', '<?php echo COOKIE_NAME; ?>');
+		$(document).data('baseurl', '<?php echo BASE_URL; ?>');
+		$(document).data('currenturl', '<?php echo $this_url; ?>');
+	</script>
+	
+	<script id="tickertpl" type="text/x-handlebars-template">
+		<ul class="ticker-feed">
+		{{#articles}}
+			<li id="{{id}}" title="{{link}}">
+				<a href="{{link}}">{{title}}</a>
+			</li>
+		{{/articles}}
+		</ul>
+	</script>
+	
+	<script type="text/javascript">
+	
+	// HANDLEBARS HELPERS
+	Handlebars.registerHelper('unless_blank', function(item, block) {
+	  return (item && item.replace(/\s/g,"").length) ? block.fn(this) : block.inverse(this);
+	});
+	
+	// PACKERY
 	var container = document.querySelector('#content'),
 	    pckryOptions = {
 		  // options
@@ -47,15 +76,37 @@
 		});
 		
 		// manually trigger initial layout
-		function setLayout(){
-			pckry.layout()
-		}
+		function setLayout(){ pckry.layout() }
+		setTimeout(setLayout, 300); // delay
+	
+	
+	
+	// JQUERY
+	;(function (window, document, $) {
 		
-        // delay
-		setTimeout(setLayout, 300);
-	
-	
-	$(function() {
+		
+		// Load the ticker
+		/////////////////////////////////
+		var baseURL = $(document).data('baseurl'),
+			currentURL = $(document).data('currenturl'),
+			currentLatestFeed;
+
+		$.ajaxSetup({ cache: false });
+
+		//loadLatest();
+
+		function loadLatest(xmlFeed) {
+			var source, template, html;
+			var $target = $('#ticker');
+			xF = (xmlFeed == undefined) ? baseURL + '/inc/feed.php?feed=dp-news-breaking' : xmlFeed;
+			currentLatestFeed = xF;
+			$.getJSON(xF, function(data) {
+				source  = $("#tickertpl").html(),
+				template = Handlebars.compile(source);
+				html = template(data);
+				$target.html(html); // add to zone 1
+			}); //getJSON
+		}
 		
 		// Footer toggles
 		$('.settings-toggle').click(function(){
@@ -105,7 +156,7 @@
 		});
 		$headerSearchToggle.on('click', function(e){
 		  $('#site-header').toggleClass('search-active').removeClass('share-active');
-          ($('#site-header').hasClass('search-active')) ? $('#search-field').focus() : $('#search-field').blur();
+          ($('#site-header').delay(500).hasClass('search-active')) ? $('#search-field').focus() :  $('#search-field').blur();
 		});
 		
 		// tooltips
@@ -119,7 +170,7 @@
 	    // popover
 	    $("[data-toggle=popover]").popover();
 	
-	});
+		}(this, document, window.jQuery||window.Zepto));
 
 	</script>
 </body>
