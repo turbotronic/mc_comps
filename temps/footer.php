@@ -168,12 +168,18 @@
 		// Footer toggles
 		$('.settings-toggle').click(function(){
 			$(this).toggleClass('active')
+			if($('#global-nav').hasClass('active')) {
+				$('#global-nav').removeClass('active');
+			}
 			if($('.filter-toggle .popover').is(':visible')) {
 				$('.filter-toggle').popover('hide').removeClass('active');
 			}
 		});
 		$('.filter-toggle').click(function(){
 			$(this).toggleClass('active');
+			if($('#global-nav').hasClass('active')) {
+				$('#global-nav').removeClass('active');
+			}
 			if($('.settings-toggle .popover').is(':visible')) {
 				$('.settings-toggle').popover('hide').removeClass('active');
 			}
@@ -181,6 +187,12 @@
 		$('.menu-toggle').click(function(){
 			$(this).toggleClass('active');
 			$('#global-nav').toggleClass('active');
+			if($('.settings-toggle .popover').is(':visible')) {
+				$('.settings-toggle').popover('hide').removeClass('active');
+			}
+			if($('.filter-toggle .popover').is(':visible')) {
+				$('.filter-toggle').popover('hide').removeClass('active');
+			}
 			});
 		
 		// reset everything on resize
