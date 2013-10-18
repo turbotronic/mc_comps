@@ -1,13 +1,12 @@
 .moving-feed {
 	.clearfix();
-	display:table;
+	display: block;
 	position: absolute;
 	top: 0;
 	left: 75px;
 	right: 125px;
 	height: @navbar-height;
 	line-height: @navbar-height;
-	overflow: hidden;
 	.text-overflow();
 	h5 {
 		display: table-cell;
@@ -27,6 +26,7 @@
 			.transition(all 1s ease-out);
 			position: relative;
 			left: 1000px;
+			
 			&.active {
 				left: 0;
 				.transition(all 1s ease-out);

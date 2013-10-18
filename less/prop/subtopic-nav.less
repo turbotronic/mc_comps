@@ -1,0 +1,137 @@
+// Subnav
+// -----------------------------------------
+
+.subtopic-page {
+	.subtopics {
+		display: block;
+	}
+	.container-packery {
+		padding-top: 120px;
+	}
+}
+
+.subtopics {
+	display: none;
+	position: absolute;
+	background: @gray-dark;
+	width: 100%;
+	top: (@navbar-height + 1);
+	border-bottom: 1px solid @border-color;
+	z-index: 998;
+	padding: 0 (@grid-gutter-width / 2);
+	h3 {
+		margin: @line-height-computed / 2 0;
+		text-transform: uppercase;
+		font-weight: 600;
+		color: @brand-warning;
+		cursor: pointer;
+		&:hover {
+			color: darken(@brand-warning, 10%);
+		}
+		.current-topic {
+			text-transform: none;
+			margin-left: .5em;
+			.font-size(16px);
+		}
+	}
+	.nav {
+		margin-left: -15px;
+		margin-right: -15px;
+		border-top:1px solid @border-color;
+		> li.active {
+			display: none;
+		}
+	}
+	.caret {
+		border-top-color: #fff;
+	}
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1310px) {
+.subtopics {
+	.container {
+		padding-left:0;
+				padding-right:0;
+		}
+	}  
+}
+
+@media only screen and (min-width: @breakpoint-md) {
+	.subtopic-page {
+		.container-packery {
+			padding-top: 100px;
+		}
+	}
+	.subtopics {
+	position: fixed;
+		.clearfix();
+		h3 {
+			.font-size(14px);
+			margin: .5em 0;
+			float: left;
+		}
+		.caret,
+		.current-topic {
+			display: none;
+		}
+		.nav {
+			.clearfix();
+			.text-overflow();
+			border: 0;
+			float: left;
+			margin-left: 15px;
+			margin-right: 15px;
+			height: auto!important;
+			> li {
+				float: left;
+				.font-size(12px);
+				margin-right: 1em;
+				&.active {
+					display: block;
+					a,
+					a:hover {
+						padding: 5px;
+						background: @brand-primary;
+						color: #fff;
+					}
+				}
+				a {
+					padding: 5px 0;
+					color: @gray-light;
+					&:hover {
+						background:transparent;
+						color: @gray-lighter;
+					}
+				}
+			}
+		}
+		.collapse {
+			display: block;
+			float: left;
+		}
+		
+		.sub-nav {
+			.text-overflow();
+			margin-top: 0;
+			padding-top: 0;
+			margin-bottom: 0;
+
+			li {
+				margin-right: .8em;
+				&:first-child {
+					margin-right: .3em;
+				}
+				&.active {
+					a {
+						padding: .5625em;
+					}
+				}
+				a {
+					&:hover {
+						color: @gray-lighter;
+					}
+				}
+			}
+		}
+	}
+}

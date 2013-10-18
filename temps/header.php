@@ -38,7 +38,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700|Oxygen:400,300,700|Titillium+Web:400,200,200italic,300,300italic,400italic,600,600italic,700,700italic,900' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="<?php echo BASE_URL; ?>/style.css" media="screen"/>
 </head>
-<body>
+<body <?php if(isset($_GET['subtopic'])){ echo 'class="subtopic-page"'; } ?>>
 	<header id="site-header" role="banner">
 	  <div class="container">
 		<a class="branding" href="#"><img src="img/logo.png" alt="" /></a>
@@ -60,3 +60,4 @@
 		</div> <!-- #search-global -->
 	  </div> <!-- .container -->
 	</header>
+    <?php include('temps/ui/subtopicsnav.php'); ?>

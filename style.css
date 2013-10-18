@@ -4109,8 +4109,180 @@ fieldset[disabled] [class*="-toggle"].active {
     bottom: 100px;
   }
 }
+.subtopic-page .subtopics {
+  display: block;
+}
+.subtopic-page .container-packery {
+  padding-top: 120px;
+}
+.subtopics {
+  display: none;
+  position: absolute;
+  background: #555555;
+  width: 100%;
+  top: 49px;
+  border-bottom: 1px solid #4f8abf;
+  z-index: 998;
+  padding: 0 15px;
+}
+.subtopics h3 {
+  margin: 11px 0;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #ffcb28;
+  cursor: pointer;
+}
+.subtopics h3:hover {
+  color: #f4b900;
+}
+.subtopics h3 .current-topic {
+  text-transform: none;
+  margin-left: .5em;
+  font-size: 16px;
+  font-size: 1.6rem;
+}
+.subtopics .nav {
+  margin-left: -15px;
+  margin-right: -15px;
+  border-top: 1px solid #4f8abf;
+}
+.subtopics .nav > li.active {
+  display: none;
+}
+.subtopics .caret {
+  border-top-color: #fff;
+}
+@media only screen and (min-width: 600px) and (max-width: 1310px) {
+  .subtopics .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .subtopic-page .container-packery {
+    padding-top: 100px;
+  }
+  .subtopics {
+    position: fixed;
+  }
+  .subtopics:before,
+  .subtopics:after {
+    content: " ";
+    /* 1 */
+  
+    display: table;
+    /* 2 */
+  
+  }
+  .subtopics:after {
+    clear: both;
+  }
+  .subtopics:before,
+  .subtopics:after {
+    content: " ";
+    /* 1 */
+  
+    display: table;
+    /* 2 */
+  
+  }
+  .subtopics:after {
+    clear: both;
+  }
+  .subtopics h3 {
+    font-size: 14px;
+    font-size: 1.4rem;
+    margin: .5em 0;
+    float: left;
+  }
+  .subtopics .caret,
+  .subtopics .current-topic {
+    display: none;
+  }
+  .subtopics .nav {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border: 0;
+    float: left;
+    margin-left: 15px;
+    margin-right: 15px;
+    height: auto!important;
+  }
+  .subtopics .nav:before,
+  .subtopics .nav:after {
+    content: " ";
+    /* 1 */
+  
+    display: table;
+    /* 2 */
+  
+  }
+  .subtopics .nav:after {
+    clear: both;
+  }
+  .subtopics .nav:before,
+  .subtopics .nav:after {
+    content: " ";
+    /* 1 */
+  
+    display: table;
+    /* 2 */
+  
+  }
+  .subtopics .nav:after {
+    clear: both;
+  }
+  .subtopics .nav > li {
+    float: left;
+    font-size: 12px;
+    font-size: 1.2rem;
+    margin-right: 1em;
+  }
+  .subtopics .nav > li.active {
+    display: block;
+  }
+  .subtopics .nav > li.active a,
+  .subtopics .nav > li.active a:hover {
+    padding: 5px;
+    background: #37a2ff;
+    color: #fff;
+  }
+  .subtopics .nav > li a {
+    padding: 5px 0;
+    color: #aaaaaa;
+  }
+  .subtopics .nav > li a:hover {
+    background: transparent;
+    color: #e7e7e7;
+  }
+  .subtopics .collapse {
+    display: block;
+    float: left;
+  }
+  .subtopics .sub-nav {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 0;
+  }
+  .subtopics .sub-nav li {
+    margin-right: .8em;
+  }
+  .subtopics .sub-nav li:first-child {
+    margin-right: .3em;
+  }
+  .subtopics .sub-nav li.active a {
+    padding: .5625em;
+  }
+  .subtopics .sub-nav li a:hover {
+    color: #e7e7e7;
+  }
+}
 .moving-feed {
-  display: table;
+  display: block;
   position: absolute;
   top: 0;
   left: 75px;
