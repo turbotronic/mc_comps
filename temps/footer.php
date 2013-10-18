@@ -187,12 +187,7 @@
 		$('.menu-toggle').click(function(){
 			$(this).toggleClass('active');
 			$('#global-nav').toggleClass('active');
-			if($('.settings-toggle .popover').is(':visible')) {
-				$('.settings-toggle').popover('hide').removeClass('active');
-			}
-			if($('.filter-toggle .popover').is(':visible')) {
-				$('.filter-toggle').popover('hide').removeClass('active');
-			}
+			$('[data-toggle=popover]').popover('hide');
 			});
 		
 		// reset everything on resize
@@ -225,7 +220,9 @@
 		});
 		$headerSearchToggle.on('click', function(e){
 		  $('#site-header').toggleClass('search-active').removeClass('share-active');
-          ($('#site-header').delay(500).hasClass('search-active')) ? $('#search-field').focus() :  $('#search-field').blur();
+		  setTimeout(function(){
+			($('#site-header').hasClass('search-active')) ? $('#search-field').focus() :  $('#search-field').blur();
+		}, 250);
 		});
 		
 		// tooltips
