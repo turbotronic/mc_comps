@@ -3956,6 +3956,7 @@ fieldset[disabled] [class*="-toggle"].active {
   display: inline-block;
   width: 33.33333%;
   height: 120px;
+  font-weight: 700;
   position: absolute;
   left: 0;
   bottom: -180px;
@@ -4087,6 +4088,26 @@ fieldset[disabled] [class*="-toggle"].active {
   bottom: 0;
   -webkit-transition-delay: 0.3s;
   transition-delay: 0.3s;
+}
+@media only screen and (orientation: landscape) {
+  .touch .main-menu li {
+    height: 100px;
+  }
+  .touch .main-menu li a .glyphicon {
+    padding-top: 10px;
+  }
+  .touch .main-menu li a .menu-title {
+    padding-bottom: 10px;
+  }
+  .touch .main-menu.active li.news {
+    bottom: 100px;
+  }
+  .touch .main-menu.active li.sports {
+    bottom: 100px;
+  }
+  .touch .main-menu.active li.entertainment {
+    bottom: 100px;
+  }
 }
 .moving-feed {
   display: table;

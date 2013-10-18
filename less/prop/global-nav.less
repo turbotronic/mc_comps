@@ -11,6 +11,7 @@
     display: inline-block;
     width: 33.33333%;
     height: 120px;
+    font-weight: @font-weight-heavy;
     position: absolute;
     left: 0;
     bottom: -180px;
@@ -134,4 +135,34 @@
          .transition-delay(.3s);
        }
     }
+}
+
+@media only screen and (orientation: landscape) {
+	@main-menu-height: 100px;
+	.touch .main-menu {
+	  li {
+	    height: @main-menu-height;
+		a {
+	      .glyphicon {
+	        padding-top: 10px;
+	      }
+	      .menu-title {
+	        padding-bottom: 10px;
+	      }
+	    }
+	  }
+	}
+	.touch .main-menu.active {
+	    li {
+	       &.news {
+	         bottom: @main-menu-height;
+	       }
+	       &.sports {
+	         bottom: @main-menu-height;
+	       }
+	       &.entertainment {
+	         bottom: @main-menu-height;
+	       }
+	    }
+	}
 }
