@@ -90,17 +90,37 @@
 		/////////////////////////////////
 		var baseURL = $(document).data('baseurl'),
 			currentURL = $(document).data('currenturl'),
-			currentLatestFeed;
+			currentLatestFeed,
+			currentPage;
 
 		$.ajaxSetup({ cache: false });
+		
+		
+		// loadMediaCenter();
+		loadNewsFeed();
 
-		loadLatest();
 
-		function loadLatest(xmlFeed) {
+		function loadMediaCenter(xmlFeed) {
+			var source, template, html;
+			var $target = $('#??????');
+			xF = (xmlFeed == undefined) ? baseURL + '/inc/feed_mc.php?feed=dp-news-breaking' : xmlFeed;
+			currentPage = xF;
+			
+			var jqxhr = $.getJSON(xF, function(data) {
+				//source  = $("#tickertpl").html(),
+				//template = Handlebars.compile(source);
+				//html = template(data);
+				//$target.html(html); // add to zone 1
+			}); 
+			jqxhr.complete(function() {
+			  setTimeout(populatePage, 1000);
+			});
+		}
+		
+		function loadNewsFeed(xmlFeed) {
 			var source, template, html;
 			var $target = $('#ticker');
-			xF = (xmlFeed == undefined) ? baseURL + '/inc/feed.php?feed=dp-news-breaking' : xmlFeed;
-			//xF = (xmlFeed == undefined) ? baseURL + '/inc/staticfeed.php' : xmlFeed;
+			xF = (xmlFeed == undefined) ? baseURL + '/inc/feed_dp.php?feed=dp-news-breaking' : xmlFeed;
 			currentLatestFeed = xF;
 			
 			var jqxhr = $.getJSON(xF, function(data) {
@@ -162,7 +182,7 @@
 				'visiblity' : 'visible',
 				'top' : '0'
 			});
-			loadLatest(currentLatestFeed);
+			loadNewsFeed(currentLatestFeed);
 		}
 		
 		// Footer toggles
