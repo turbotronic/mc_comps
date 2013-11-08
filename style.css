@@ -4787,7 +4787,11 @@ fieldset[disabled] [class*="-toggle"].active {
   padding: 15px;
 }
 #content.container footer .related-posts .sm-block-grid-2 > li > a {
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  overflow: hidden;
   display: block;
+  position: relative;
 }
 #content.container footer .related-posts .sm-block-grid-2 > li > a:hover {
   filter: url('img/filters.svg#grayscale');
@@ -4799,6 +4803,25 @@ fieldset[disabled] [class*="-toggle"].active {
   -webkit-filter: grayscale(1);
   /* Google Chrome, Safari 6+ & Opera 15+ */
 
+}
+#content.container footer .related-posts .sm-block-grid-2 > li > a:hover .quick-info {
+  -webkit-transition: top 0.2s ease-in-out 0.5s;
+  transition: top 0.2s ease-in-out 0.5s;
+  top: 0;
+}
+#content.container footer .related-posts .sm-block-grid-2 > li .quick-info {
+  -webkit-transition: top 0.2s ease-in-out;
+  transition: top 0.2s ease-in-out;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.75);
+  position: absolute;
+  top: 100%;
+}
+#content.container footer .touch footer .quick-info {
+  display: none;
 }
 #content.container footer .pager {
   width: auto;

@@ -14,7 +14,7 @@
 					<p>“I realized early on that I couldn’t just focus on the process of urban gardening anymore,” writes Yoon. “Urban gardening alone was not going to fix the problems of the economically strained in Detroit. But instead, it became much more about all of the different people and communities who were working towards this momentum of change.”</p>
 				</div> <!-- .story-info -->
 				<div class="meta">
-					<p><span class="posted-by">Posted by <a href="#">Meghan Lyden</a> on <span class="timestamp">12.13.12</span></span><span class="tags visible-md-up">under <a href="#">Tag name here</a>, <a href="#">another tag</a>, <a href="#">another tag</a></span></p>
+					<p><span class="posted-by">Posted by <a href="#">Meghan Lyden</a> on <span class="timestamp">12.13.12</span></span><span class="divider"></span><span class="tags">tags: <a href="#">Tag name here</a>, <a href="#">another tag</a>, <a href="#">another tag</a></span></p>
 					<div class="share-zipper">
 						<div class="drawer">
 							<ul class="share-tools">
@@ -79,12 +79,54 @@
 				<div class="related-posts">
 					<h4>Related Posts</h4>
 					<ul class="sm-block-grid-2">
-					  <li><a href=""><img src="<?php echo ASSETS_IMG;?>/miley1.jpg"></a></li>
-					  <li><a href=""><img src="<?php echo ASSETS_IMG;?>/miley2.jpg"></a></li>
-					  <li><a href=""><img src="<?php echo ASSETS_IMG;?>/miley3.jpg"></a></li>
-					  <li><a href=""><img src="<?php echo ASSETS_IMG;?>/miley4.jpg"></a></li>
-					  <li><a href=""><img src="<?php echo ASSETS_IMG;?>/miley5.jpg"></a></li>
-					  <li><a href=""><img src="<?php echo ASSETS_IMG;?>/not-miley.jpg"></a></li>
+					  <li>
+						<a href="">
+						<img src="<?php echo ASSETS_IMG;?>/miley1.jpg">
+					    <div class="quick-info">
+					    	<h4>A pic of Miley Cyrus in this space here</h4>
+					    </div>
+					    </a>
+					  </li>
+					  <li>
+						<a href="">
+						<img src="<?php echo ASSETS_IMG;?>/miley2.jpg">
+					    <div class="quick-info">
+					    	<h4>Another pic of Miley Cyrus in this space</h4>
+					    </div>
+					    </a>
+					  </li>
+					  <li>
+						<a href="">
+						<img src="<?php echo ASSETS_IMG;?>/miley3.jpg">
+					    <div class="quick-info">
+					    	<h4>Hmmm ... yet another pic of Miley Cyrus in this space</h4>
+					    </div>
+					    </a>
+					  </li>
+					  <li>
+						<a href="">
+						<img src="<?php echo ASSETS_IMG;?>/miley4.jpg">
+					    <div class="quick-info">
+					    	<h4>And one more pic of Miley Cyrus</h4>
+					    </div>
+					    </a>
+					  </li>
+					  <li>
+						<a href="">
+						<img src="<?php echo ASSETS_IMG;?>/miley5.jpg">
+					    <div class="quick-info">
+					    	<h4>Geez, no Ryan Gosling pictures?</h4>
+					    </div>
+					    </a>
+					  </li>
+					  <li>
+						<a href="">
+						<img src="<?php echo ASSETS_IMG;?>/not-miley.jpg">
+					    <div class="quick-info">
+					    	<h4>This is not a picture of Miley Cyrus</h4>
+					    </div>
+					    </a>
+					  </li>
 					</ul>
 				</div>
 			</div>
