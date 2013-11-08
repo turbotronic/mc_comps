@@ -29,8 +29,8 @@ defined('IMG_DIR') ? null : define('IMG_DIR',  BASE_URL . DS . 'img');
 defined('JS_DIR') ? null : define('JS_DIR', BASE_URL . DS . 'js');
 defined('XML_DIR') ? null : define('XML_DIR',  BASE_URL . DS . 'xml');
 defined('ASSETS_DIR') ? null : define('ASSETS_DIR', BASE_URL . DS . 'assets');
-defined('ASSETS_IMG') ? null : define('ASSETS_IMG', BASE_URL . 'assets' . DS . 'images');
-defined('ASSETS_DOC') ? null : define('ASSETS_DOC', BASE_URL . 'assets' . DS . 'docs');
+defined('ASSETS_IMG') ? null : define('ASSETS_IMG', BASE_URL . DS . 'assets' . DS . 'img');
+defined('ASSETS_DOC') ? null : define('ASSETS_DOC', BASE_URL . DS . 'assets' . DS . 'docs');
 defined('ADMIN_HOME') ? null : define('ADMIN_HOME', BASE_URL . DS . 'admin');
 
 // CACHING

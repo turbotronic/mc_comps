@@ -57,6 +57,8 @@
 	  return (item && item.replace(/\s/g,"").length) ? block.fn(this) : block.inverse(this);
 	});
 	
+	
+	<?php if($page_type === 'home'): ?>
 	// PACKERY
 	var container = document.querySelector('#content'),
 	    pckryOptions = {
@@ -80,7 +82,7 @@
 		function setLayout(){ pckry.layout() }
 		setTimeout(setLayout, 300); // delay
 	
-	
+		<?php endif; ?>
 	
 	// JQUERY
 	;(function (window, document, $) {
@@ -93,9 +95,9 @@
 			currentLatestFeed;
 
 		$.ajaxSetup({ cache: false });
-
+	<?php if($page_type === 'home'): ?>
 		loadLatest();
-
+	<?php endif; ?>
 		function loadLatest(xmlFeed) {
 			var source, template, html;
 			var $target = $('#ticker');
