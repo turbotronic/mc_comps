@@ -39,7 +39,10 @@
 	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="<?php echo BASE_URL; ?>/style.css" media="screen"/>
 </head>
-<body <?php if(isset($_GET['subtopic'])){ echo 'class="subtopic-page"'; } ?>>
+<body class="<?php if(isset($_GET['subtopic'])){ echo 'subtopic-page '; } ?>
+			<?php if($page_type == 'blog-homepage'){ echo 'blog-homepage '; } ?>
+			<?php if($page_type == 'article'){ echo 'article-page '; } ?>
+		">
 	<header id="site-header" role="banner">
 	  <div class="container">
 		<a class="branding" href="#"><img src="img/logo.png" alt="" /></a>

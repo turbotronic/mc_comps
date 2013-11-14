@@ -270,3 +270,30 @@
 	margin: @grid-gutter-width 0; 
 	
 }
+
+.blog-homepage {
+	@media (max-width: @breakpoint-sm-max) {
+		#content.container {
+			padding-right: 0;
+			padding-left: 0;
+		}
+		.col {
+			margin-right: 0;
+			margin-left: 0;
+			padding: 0;
+		}
+	}
+	.col {
+		margin-bottom: @line-height-computed;
+	}
+	@media (min-width: @breakpoint-md) {
+		.col {
+			margin-bottom: (@line-height-computed * 2);
+		}
+	}
+	@media (min-width: @breakpoint-lg) {
+		.col {
+			margin-bottom: (@line-height-computed * 3);
+		}
+	}
+}
