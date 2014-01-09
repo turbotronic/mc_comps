@@ -3,6 +3,7 @@
 <?php require_once('temps/header.php'); // load in header ?>
 <div id="content" class="container-packery">
 	 <div class="col sm-4 md-8 lg-6">
+	 <!-- <div class="col sm-4 md-8 lg-9"> -->
 		<div class="block-refer">
 			<a href=""><img src="img/test_img/img0.jpg" alt="" /></a>
 			<h3><a href="">Comedy Bang! Bang!” returns for the second half of season 2 on Oct. 18 on IFC</a></h3>
@@ -156,7 +157,7 @@
 		</div> <!-- .block-refer -->
 	</div> <!-- grid stuff -->
 	
-	 <div class="col sm-4 md-4 lg-6">
+	 <div class="col sm-2 md-4 lg-3">
 		<div class="block-refer">
 			<a href=""><img src="img/test_img/img28.jpg" alt="" /></a>
 			<h3><a href="">Montbello vs Standley Lake In Colorado Class 4A Football</a></h3>

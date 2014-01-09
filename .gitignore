@@ -13,3 +13,4 @@ Icon
 
 #Files in this folder
 less/framework
+node_modules/*

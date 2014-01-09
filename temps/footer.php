@@ -103,15 +103,15 @@
   
     function loadMediaCenter(xmlFeed) {
       var source, template, html;
-      var $target = $('#??????');
+      var $target = $('#ticker');
       xF = (xmlFeed == undefined) ? baseURL + '/inc/feed_mc.php?feed=dp-news-breaking' : xmlFeed;
       currentPage = xF;
       
       var jqxhr = $.getJSON(xF, function(data) {
-        //source  = $("#tickertpl").html(),
-        //template = Handlebars.compile(source);
-        //html = template(data);
-        //$target.html(html); // add to zone 1
+        source  = $("#tickertpl").html(),
+        template = Handlebars.compile(source);
+        html = template(data);
+        $target.html(html); // add to zone 1
       }); 
       jqxhr.complete(function() {
         setTimeout(populatePage, 1000);
