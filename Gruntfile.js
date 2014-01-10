@@ -7,7 +7,7 @@ module.exports = function(grunt) {
     less: {
       compileCore: {
         options: {
-          strictMath: true,
+          // strictMath: true,
           sourceMap: true,
           outputSourceFiles: true
         },
@@ -60,7 +60,7 @@ module.exports = function(grunt) {
       },
       styles: {
         // Which files to watch (all .less files recursively in the less directory)
-        files: ['less/style.less'],
+        files: ['less/*'],
         tasks: ['less'],
         options: {
           livereload: true
