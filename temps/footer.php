@@ -23,15 +23,13 @@
   <?php include('temps/ui/signin.php'); ?>
 
   <!-- JAVASCRIPTS -->
-  <script src="<?php echo JS_DIR; ?>/lib/jquery.js"></script>
+
+  <!-- Main file :: includes jQuery and all other dependancies -->
+  <script src="<?php echo JS_DIR; ?>/lib/media-center.min.js"></script>
+
   <!--[if lt IE 9]>
-    <script src="<?php echo JS_DIR; ?>/ie/selectivizr.js"></script>
-    <script src="<?php echo JS_DIR; ?>/ie/respond.js"></script>
+    <script src="<?php echo JS_DIR; ?>/ie/ie.min.js"></script>
   <![endif]-->
-    <script src="<?php echo JS_DIR; ?>/lib/handlebars.js"></script>
-  <script src="<?php echo JS_DIR; ?>/plugins/bootstrap.min.js"></script>
-    <script src="<?php echo JS_DIR; ?>/plugins/packery.min.js"></script>
-    <script src="<?php echo JS_DIR; ?>/plugins/jquery.cookie.min.js"></script>
 
   <script type="text/javascript">
     $(document).data('cookiename', '<?php echo COOKIE_NAME; ?>');
@@ -56,7 +54,6 @@
   Handlebars.registerHelper('unless_blank', function(item, block) {
     return (item && item.replace(/\s/g,"").length) ? block.fn(this) : block.inverse(this);
   });
-  
   
   <?php if($page_type === 'home'): ?>
   // PACKERY

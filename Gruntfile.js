@@ -57,17 +57,25 @@ module.exports = function (grunt) {
       scriptFiles: {
         src: [
           'js/lib/jquery.js',
+          'js/lib/handlebars.js',
           'js/plugins/bootstrap.js',
-          'js/plugins/picturefill.js',
-          'js/plugins/util.js',
-          'js/app.js'
+          'js/plugins/packery.js',
+          'js/plugins/jquery.cookie.js',
+          'js/plugins/util.js'
         ],
         dest: 'js/<%= pkg.name %>.js'
+      },
+      ieFiles: {
+        src: [
+          'js/ie/respond.js',
+          'js/ie/selectivizr.js'
+        ],
+        dest: 'js/ie.js'
       }
     },
 
     uglify: {
-      bootstrap: {
+      mainFiles: {
         options: {
           banner: '<%= banner %>\n',
           report: 'min'
@@ -75,6 +83,13 @@ module.exports = function (grunt) {
         src: ['<%= concat.scriptFiles.dest %>'],
         dest: 'js/<%= pkg.name %>.min.js'
       },
+      ie: {
+        options: {
+          report: 'min'
+        },
+        src: 'js/ie.js',
+        dest: 'js/ie.min.js'
+      }
     },
 
     less: {
