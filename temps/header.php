@@ -35,9 +35,7 @@
 	<!-- MODERNIZER -->
 	<script src="<?php echo JS_DIR; ?>/lib/modernizr.js"></script>
 	<!-- STYLESHEETS -->
-	<link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700|Oxygen:400,300,700|Titillium+Web:400,200,200italic,300,300italic,400italic,600,600italic,700,700italic,900' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="<?php echo BASE_URL; ?>/style.css" media="screen"/>
+	<link rel="stylesheet" href="<?php echo BASE_URL; ?>/css/media-center.min.css" media="screen"/>
 </head>
 <body class="<?php if(isset($_GET['subtopic'])){ echo 'subtopic-page '; } ?>
 			<?php if($page_type == 'blog-homepage'){ echo 'blog-homepage '; } ?>
