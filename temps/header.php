@@ -34,8 +34,10 @@
 
 	<!-- MODERNIZER -->
 	<script src="<?php echo JS_DIR; ?>/lib/modernizr.js"></script>
+	
 	<!-- STYLESHEETS -->
 	<link rel="stylesheet" href="<?php echo BASE_URL; ?>/css/media-center.min.css" media="screen"/>
+
 </head>
 <body class="<?php if(isset($_GET['subtopic'])){ echo 'subtopic-page '; } ?>
 			<?php if($page_type == 'blog-homepage'){ echo 'blog-homepage '; } ?>

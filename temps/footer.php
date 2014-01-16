@@ -25,7 +25,7 @@
   <!-- JAVASCRIPTS -->
 
   <!-- Main file :: includes jQuery and all other dependancies -->
-  <script src="<?php echo JS_DIR; ?>/lib/media-center.min.js"></script>
+  <script src="<?php echo JS_DIR; ?>/media-center.min.js"></script>
 
   <!--[if lt IE 9]>
     <script src="<?php echo JS_DIR; ?>/ie/ie.min.js"></script>
