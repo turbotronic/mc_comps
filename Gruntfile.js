@@ -56,7 +56,11 @@ module.exports = function (grunt) {
       },
       scriptFiles: {
         src: [
-
+          'js/lib/jquery.js',
+          'js/plugins/bootstrap.js',
+          'js/plugins/picturefill.js',
+          'js/plugins/util.js',
+          'js/app.js'
         ],
         dest: 'js/<%= pkg.name %>.js'
       }

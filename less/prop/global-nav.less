@@ -18,39 +18,39 @@
     .transition(all 0.2s ease-in-out);
     .opacity(0);
      &.news {
-	    a {
+      a {
           background: @brand-primary;
-		}
+    }
         .transition-delay(.3s);
      }
      &.sports {
-	    a {
+      a {
           background: @brand-secondary;
-		}
+    }
         .transition-delay(.2s);
      }
      &.entertainment {
-	    a {
+      a {
           background: @brand-warning;
-		}
+    }
         .transition-delay(.1s);
      }
      &.projects {
-	    a {
+      a {
           background: @brand-info;
-		}
+    }
         .transition-delay(.6s);
      }
      &.images {
-	    a {
+      a {
           background: @brand-danger;
-		}
+    }
         .transition-delay(.5s);
      }
      &.video {
-	    a {
+      a {
           background: @brand-success;
-		}
+    }
         .transition-delay(.4s);
      }
     a {
@@ -80,24 +80,24 @@
   }
 }
 .no-touch {
-	.main-menu {
-		li {
-			-webkit-transform: skew(-90deg, 0deg);
-		    -moz-transform: skew(-90deg, 0deg);
-		    -o-transform: skew(-90deg, 0deg);
-		    -ms-transform: skew(-90deg, 0deg);
-		    transform: skew(-90deg, 0deg);
-		}
-	}
-	.main-menu.active {
-	    li {
-	    -webkit-transform: skew(0deg, 0deg);
-	    -moz-transform: skew(0deg, 0deg);
-	    -o-transform: skew(0deg, 0deg);
-	    -ms-transform: skew(0deg, 0deg);
-	    transform: skew(0deg, 0deg);
-	   }
-	}
+  .main-menu {
+    li {
+      -webkit-transform: skew(-90deg, 0deg);
+        -moz-transform: skew(-90deg, 0deg);
+        -o-transform: skew(-90deg, 0deg);
+        -ms-transform: skew(-90deg, 0deg);
+        transform: skew(-90deg, 0deg);
+    }
+  }
+  .main-menu.active {
+      li {
+      -webkit-transform: skew(0deg, 0deg);
+      -moz-transform: skew(0deg, 0deg);
+      -o-transform: skew(0deg, 0deg);
+      -ms-transform: skew(0deg, 0deg);
+      transform: skew(0deg, 0deg);
+     }
+  }
 }
 
 .main-menu.active {
@@ -138,31 +138,31 @@
 }
 
 @media only screen and (orientation: landscape) {
-	@main-menu-height: 100px;
-	.touch .main-menu {
-	  li {
-	    height: @main-menu-height;
-		a {
-	      .glyphicon {
-	        padding-top: 10px;
-	      }
-	      .menu-title {
-	        padding-bottom: 10px;
-	      }
-	    }
-	  }
-	}
-	.touch .main-menu.active {
-	    li {
-	       &.news {
-	         bottom: @main-menu-height;
-	       }
-	       &.sports {
-	         bottom: @main-menu-height;
-	       }
-	       &.entertainment {
-	         bottom: @main-menu-height;
-	       }
-	    }
-	}
+  @main-menu-height: 100px;
+  .touch .main-menu {
+    li {
+      height: @main-menu-height;
+    a {
+        .glyphicon {
+          padding-top: 10px;
+        }
+        .menu-title {
+          padding-bottom: 10px;
+        }
+      }
+    }
+  }
+  .touch .main-menu.active {
+      li {
+         &.news {
+           bottom: @main-menu-height;
+         }
+         &.sports {
+           bottom: @main-menu-height;
+         }
+         &.entertainment {
+           bottom: @main-menu-height;
+         }
+      }
+  }
 }
