@@ -1,5 +1,5 @@
 //
-// Variables :: reorg and do camel case????
+// Variables
 // --------------------------------------------------
 
 
@@ -84,6 +84,7 @@
 
 @icon-font-path:          "fonts/";
 @icon-font-name:          "glyphicons-halflings-regular";
+@icon-font-svg-id:        "glyphicons_halflingsregular";
 
 @web-icon-path:          "img/webicons/";
 
@@ -259,18 +260,12 @@
 // Padding, to be divided by two and applied to the left and right of all columns
 @grid-gutter-width:         30px;
 
-// Columns and gutters
+// Columns
 @grid-columns-xs:         4;
 @grid-columns-sm:         @grid-columns-xs;
 @grid-columns-md:         @grid-columns;
 @grid-columns-lg:         @grid-columns-md;
 @grid-columns-xl:         @grid-columns-lg;
-
-@grid-gutter-width-xs:    @grid-gutter-width;
-@grid-gutter-width-sm:    @grid-gutter-width;
-@grid-gutter-width-md:    @grid-gutter-width;
-@grid-gutter-width-lg:    @grid-gutter-width;
-@grid-gutter-width-xl:    @grid-gutter-width;
 
 // Minimum widths
 @site-min-width:          320px;
@@ -292,21 +287,24 @@
 @grid-float-breakpoint:     @breakpoint-md;
 
 
-// Container sizes
-// For frozen containers at certain sizes
-// --------------------------------------------------
+// Container sizes -- used in optional 'grid-stops.less' file
+// ---------------------------------------------------------
 
 // Small screen / tablet
-// Depreciated due to adoptions of new grid????
-@container-tablet:            ((720px + @grid-gutter-width));
+@container-tablet:             ((720px + @grid-gutter-width));
+@container-sm:                 @container-tablet;
 
 // Medium screen / desktop
-// Depreciated due to adoptions of new grid????
-@container-desktop:           ((940px + @grid-gutter-width));
+@container-desktop:            ((900px + @grid-gutter-width));
+@container-md:                 @container-desktop;
 
 // Large screen / wide desktop
-// Depreciated due to adoptions of new grid????
-@container-lg-desktop:        ((1140px + @grid-gutter-width));
+@container-lg-desktop:         ((1140px + @grid-gutter-width));
+@container-lg:                 @container-lg-desktop;
+
+// For static width sites
+@site-static-width:            @container-lg;
+
 
 
 // Navbar
@@ -599,6 +597,7 @@
 @list-group-active-color:     #fff;
 @list-group-active-bg:        @component-active-bg;
 @list-group-active-border:    @list-group-active-bg;
+@list-group-active-text-color:   lighten(@list-group-active-bg, 40%);
 
 @list-group-link-color:          #555;
 @list-group-link-heading-color:  #333;
