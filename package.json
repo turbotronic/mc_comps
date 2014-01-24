@@ -2,7 +2,7 @@
   "name": "media-center",
   "description": "Media Center WordPress theme",
   "version": "7.0.0",
-  "strapitVersion" : "2.0.3",
+  "strapit" : "2.0.3",
   "homepage": "http://sandbox.digitalfirstmedia.com/mc_comps",
   "author": "Digital First Media design team",
   "repository": {

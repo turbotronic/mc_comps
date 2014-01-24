@@ -17,7 +17,7 @@ module.exports = function (grunt) {
     pkg: grunt.file.readJSON('package.json'),
     banner: '/*!\n' +
               ' * <%= pkg.name %> v<%= pkg.version %>\n' +
-              ' * Built using Strapit v<%= pkg.strapitVersion %> \n' + 
+              ' * Built using Strapit v<%= pkg.strapit %> \n' + 
               ' * Homepage: <%= pkg.homepage %>\n' +
               ' * GitHub: <%= pkg.repository.url %>\n' +
               ' * Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
