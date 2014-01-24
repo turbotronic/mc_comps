@@ -1,3 +1,5 @@
+@import url("//fonts.googleapis.com/css?family=Oswald:400,300,700|Oxygen:400,300,700|Titillium+Web:400,200,200italic,300,300italic,400italic,600,600italic,700,700italic,900");
+@import url("http://fonts.googleapis.com/css?family=Roboto+Slab:400,700");
 /*!
  * Strapit Framework v2.0.0
  *
@@ -5181,6 +5183,9 @@ fieldset[disabled] [class*="-toggle"].active {
   .blog-homepage .col {
     margin-bottom: 66px;
   }
+}
+#content.container.category-page .block-refer img {
+  float: left;
 }
 @font-face {
   font-family: 'Glyphicons Halflings';
